@@ -13,25 +13,25 @@ namespace TestReact.Controllers
     [ApiController]
     public class ChildrenController : ControllerBase
     {
-        private readonly VaccinationsContext _context;
+        private readonly ClinicContext _context;
 
-        public ChildrenController(VaccinationsContext context)
+        public ChildrenController(ClinicContext context)
         {
             _context = context;
         }
 
         // GET: api/Children
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Child>>> GetChilds()
+        public async Task<ActionResult<IEnumerable<Child>>> GetChildren()
         {
-            return await _context.Childs.ToListAsync();
+            return await _context.Children.ToListAsync();
         }
 
         // GET: api/Children/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Child>> GetChild(int id)
         {
-            var child = await _context.Childs.FindAsync(id);
+            var child = await _context.Children.FindAsync(id);
 
             if (child == null)
             {
@@ -46,7 +46,7 @@ namespace TestReact.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChild(int id, Child child)
         {
-            if (id != child.Id)
+            if (id != child.ChildId)
             {
                 return BadRequest();
             }
@@ -77,23 +77,37 @@ namespace TestReact.Controllers
         [HttpPost]
         public async Task<ActionResult<Child>> PostChild(Child child)
         {
-            _context.Childs.Add(child);
-            await _context.SaveChangesAsync();
+            _context.Children.Add(child);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (ChildExists(child.ChildId))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            return CreatedAtAction("GetChild", new { id = child.Id }, child);
+            return CreatedAtAction("GetChild", new { id = child.ChildId }, child);
         }
 
         // DELETE: api/Children/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteChild(int id)
         {
-            var child = await _context.Childs.FindAsync(id);
+            var child = await _context.Children.FindAsync(id);
             if (child == null)
             {
                 return NotFound();
             }
 
-            _context.Childs.Remove(child);
+            _context.Children.Remove(child);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +115,7 @@ namespace TestReact.Controllers
 
         private bool ChildExists(int id)
         {
-            return _context.Childs.Any(e => e.Id == id);
+            return _context.Children.Any(e => e.ChildId == id);
         }
     }
 }

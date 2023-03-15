@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using TestReact.Models;
 
 namespace TestReact.Models;
 
 public partial class Child
 {
-    public int Id { get; set; }
+    public int ChildId { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? Surname { get; set; }
 
-    public string Surname { get; set; } = null!;
+    public string? Name { get; set; }
 
     public string? Fathername { get; set; }
 
-    public int? IdParent { get; set; }
+    public DateTime? BirthDate { get; set; }
 
-    public DateTime? BirthdayDate { get; set; }
+    public string? Sex { get; set; }
 
-    public virtual ICollection<HistoryOfHealth> HistoryOfHealths { get; } = new List<HistoryOfHealth>();
+    public string? PolisOms { get; set; }
 
-    public virtual Parent? IdParentNavigation { get; set; }
-
-    public virtual ICollection<QueueForVaccination> QueueForVaccinations { get; } = new List<QueueForVaccination>();
-
-    public virtual ICollection<RecordBook> RecordBooks { get; } = new List<RecordBook>();
+    public string? Adress { get; set; }
 }

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TestReact.Models;
+using TestReact.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,7 @@ string connection = builder.Configuration.GetConnectionString("DefaultConnection
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<VaccinationsContext>(options => options.UseSqlServer(connection));
+builder.Services.AddDbContext<ClinicContext>(options => options.UseSqlServer(connection));
 
 var app = builder.Build();
 
@@ -29,6 +30,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html"); ;
+app.MapFallbackToFile("index.html");
 
 app.Run();
