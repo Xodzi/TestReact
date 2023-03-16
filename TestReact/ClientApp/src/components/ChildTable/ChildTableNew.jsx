@@ -12,8 +12,18 @@ export default function ChildTableNew() {
   const [sort, setSort] = useState("asc")
   const [search, setSearch] = useState('')
 
+  const [totalCount,setTotalCount] = useState(0);
+  const [page, setPage] = useState(1);
+
+  let pages = useMemo(() => {
+    let pagesArray = []
+    for(let i=0;i<totalCount;i++){
+      pagesArray.push(i+1);
+  }
+    return pagesArray
+  }, [totalCount])  
+
   const searchedChildrens = useMemo(() => {
-    console.log(1);
     return childrens.filter(child => child.surname.toLowerCase().includes(search.toLowerCase()))
   }, [search,childrens])
 
@@ -42,7 +52,7 @@ export default function ChildTableNew() {
       <ChildInput type="text" placeholder="Фамилия" />
       <ChildInput type="text" placeholder="Отчество" />
       <ChildInput type="date" placeholder="Дата рождения" />
-      <select className=".sex" >
+      <select className="sex" >
       <option disabled> Пол </option>
       <option value="мальчик"> мужской </option>
       <option value="девочка"> женский </option>
@@ -120,6 +130,11 @@ export default function ChildTableNew() {
           ))}
         </tbody>
       </table>
+      <div className="pagination">
+        {pages.map((pa) =>
+          <button></button>
+          )}
+      </div>
     </div>
   );
 
@@ -150,9 +165,11 @@ export default function ChildTableNew() {
   }
   
   async function Get() {
-    const response = await fetch("api/Children");
+    const response = await fetch("api/Children/"+page);
     const data = await response.json();
-    setChildrens(data);
+    const arr = data.childs;
+    setTotalCount(Math.ceil(data.pages/10));
+    setChildrens(arr);
     setLoading(false);
   }
 }

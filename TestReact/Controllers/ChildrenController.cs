@@ -15,31 +15,52 @@ namespace TestReact.Controllers
     {
         private readonly ClinicContext _context;
 
+        private int _totalCount;
+        private int? _currentPage;
+        private int? _pageSize;
+        private int? _totalPages;
+
         public ChildrenController(ClinicContext context)
         {
             _context = context;
         }
 
         // GET: api/Children
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Child>>> GetChildren()
+        [HttpGet("{page}")]
+        public async Task<ActionResult<IEnumerable<Child>>> GetChildren(int page)
         {
-            return await _context.Children.ToListAsync();
+            var pageResults = 10f;
+            var pageCount = Math.Ceiling(_context.Children.Count()/pageResults);
+
+
+            
+            var childs = await _context.Children
+                .Skip((page-1)*(int)pageResults)
+                .Take((int)pageResults)
+                .ToListAsync();
+
+            var response = new ChildResponse()
+            {
+                Childs = childs,
+                Pages = (int)pageCount,
+                CurrentPage = page
+            };
+            return Ok(response);
         }
 
         // GET: api/Children/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Child>> GetChild(int id)
-        {
-            var child = await _context.Children.FindAsync(id);
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Child>> GetChild(int id)
+        //{
+        //    var child = await _context.Children.FindAsync(id);
 
-            if (child == null)
-            {
-                return NotFound();
-            }
+        //    if (child == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return child;
-        }
+        //    return child;
+        //}
 
         // PUT: api/Children/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -73,7 +94,7 @@ namespace TestReact.Controllers
         }
 
         // POST: api/Children
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Child>> PostChild(Child child)
         {
