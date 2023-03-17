@@ -26,26 +26,27 @@ namespace TestReact.Controllers
         }
 
         // GET: api/Children
-        [HttpGet("{page}")]
-        public async Task<ActionResult<IEnumerable<Child>>> GetChildren(int page)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Child>>> GetChildren()
         {
             var pageResults = 10f;
             var pageCount = Math.Ceiling(_context.Children.Count()/pageResults);
 
 
             
-            var childs = await _context.Children
-                .Skip((page-1)*(int)pageResults)
-                .Take((int)pageResults)
+            return await _context.Children
+               // .Skip((page-1)*(int)pageResults)
+               // .Take((int)pageResults)
                 .ToListAsync();
 
-            var response = new ChildResponse()
-            {
-                Childs = childs,
-                Pages = (int)pageCount,
-                CurrentPage = page
-            };
-            return Ok(response);
+
+            //var response = new ChildResponse()
+            //{
+            //    Childs = childs,
+            //    Pages = (int)pageCount,
+            //    CurrentPage = page
+            //};
+            //return Ok(response);
         }
 
         // GET: api/Children/5

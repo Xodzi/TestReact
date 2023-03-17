@@ -1,6 +1,14 @@
 export const COLUMNS = [
     {
-        Header: 'id',
-        accesor: 'childId'
-    }
+        field: 'childId',
+        headerName: 'Id'
+    },
+    {
+        field: 'surname',
+        headerName: 'Фамилия'
+    },
+    {
+        field: 'name',
+        headerName: 'Имя'
+    },
 ]
