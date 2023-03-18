@@ -18,6 +18,17 @@ import Paper from '@mui/material/Paper';
 
 export default function ChildTableNew() {
 
+  const [change_arr, setChange] = useState({
+    name:"",
+    surname: "",
+    fathername: "",
+    date: Date,
+    sex: "",
+    polis: "",
+    adress: ""
+  });
+  const [updateModal, setUpdateModal] = useState(false);
+
   const [childrens, setChildrens] = useState([]);
   const [selectedRow, setSelectedRow] = useState(-1);
   const [loading, setLoading] = useState(true);
@@ -48,6 +59,17 @@ export default function ChildTableNew() {
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
     };
+    
+    function searchSelected () {
+      for(let i=0; i < childrens.length; i++){
+        if(childrens[i].childId==selectedRow){
+          return childrens[i];
+        }
+      }
+      console.log("error")
+      setSelectedRow(childrens[0].childId)
+      return childrens[0];
+    }
   
     const handleChangeRowsPerPage = (event) => {
       setRowsPerPage(parseInt(event.target.value, 10));
@@ -69,7 +91,6 @@ export default function ChildTableNew() {
     Get();
   }, []);
   
-
   return (
     loading? 
     <p>
@@ -80,14 +101,15 @@ export default function ChildTableNew() {
     <div>
   <ChildModal visible={createModal} setVisible={setCreateModal}>
     <form>
+      <h5>Создание и добавление</h5>
       <ChildInput 
         value={name} 
-        onChange={e => setName(e.target.value)} 
+        onChange={e => setSurname(e.target.value)} 
         type="text" 
-        placeholder="Имя"/>
+        placeholder="Фамилия"/>
 
-      <ChildInput type="text" placeholder="Фамилия" 
-      onChange={e => setSurname(e.target.value)} 
+      <ChildInput type="text" placeholder="Имя" 
+      onChange={e => setName(e.target.value)} 
       />
       <ChildInput type="text" placeholder="Отчество" 
       onChange={e => setFathername(e.target.value)} 
@@ -118,12 +140,80 @@ export default function ChildTableNew() {
   </ChildModal>
   </div>
 
+  <div>
+  <ChildModal visible={updateModal} setVisible={setUpdateModal}>
+    <form>
+      <h5>Редактирование</h5>
+      <ChildInput 
+        value={change_arr.surname} 
+        onChange={e => setChange({
+          ...change_arr,
+          surname: e.target.value
+        })} 
+        type="text" 
+        placeholder="Фамилия"/>
+
+      <ChildInput type="text" placeholder="Имя"
+      value={change_arr.name} 
+      onChange={e => setChange({
+        ...change_arr,
+        name: e.target.value
+      })} 
+      />
+      <ChildInput type="text" placeholder="Отчество"
+      value={change_arr.fathername} 
+      onChange={e => setChange({
+        ...change_arr,
+        fathername: e.target.value
+      })} 
+      />
+      <ChildInput type="date" placeholder="Дата рождения"
+     
+      onChange={e => setChange({
+        ...change_arr,
+        date: e.target.value
+      })} 
+      />
+      <select className="sex" onChange={e => setChange({
+          ...change_arr,
+          surname: e.target.value
+        })}>
+      <option disabled> Пол </option>
+      <option value="мужской"> мужской </option>
+      <option value="женский"> женский </option>
+      </select>
+      <ChildInput type="text" placeholder="Полис" 
+      value={change_arr.polisOms}
+      onChange={e => setChange({
+        ...change_arr,
+        polisOms: e.target.value
+      })}
+      />
+      <ChildInput type="text" placeholder="Адрес"
+      value={change_arr.adress} 
+      onChange={e => setChange({
+        ...change_arr,
+        adress: e.target.value
+      })}
+      />
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-add" onClick={SaveChange}>
+          Сохранить
+        </button>
+        <button type="button" class="btn btn-delete" onClick={() => setUpdateModal(false)}>
+          Закрыть
+        </button>
+      </div>
+    </form>
+  </ChildModal>
+  </div>
+
   <div class="btn-toolbar justify-content-between" aria-label="Toolbar with button groups">
     <div class="btn-group" role="group" aria-label="First group">
       <button type="button" class="btn btn-add" onClick={() => setCreateModal(true)}>
         Add
       </button>
-      <button type="button" class="btn btn-update">
+      <button type="button" class="btn btn-update" onClick={() => {setChange(searchSelected()); setUpdateModal(true)}}>
         Update
       </button>
       <button type="button" class="btn btn-delete" onClick={Delete}>
@@ -162,30 +252,30 @@ export default function ChildTableNew() {
             <TableRow key={row.childId} onClick={() => {
               setSelectedRow(row.childId);
               console.log(selectedRow);
-            }}  className={selectedRow === row.childId ? "selected" : ""}>
+            }} className={selectedRow === row.childId ? "row selected" : "row"}>
               
-              <TableCell style={{ width: 20}}>
+              <TableCell >
                 {row.childId}
               </TableCell>
-              <TableCell style={{ width: 20}} align="right">
+              <TableCell align="right" >
                 {row.surname}
               </TableCell>
-              <TableCell style={{ width: 20}} align="right">
+              <TableCell align="right" >
                 {row.name}
               </TableCell>
-              <TableCell style={{ width: 20}} align="right">
+              <TableCell align="right">
                 {row.fathername}
               </TableCell>
-              <TableCell style={{ width: 20}} align="right">
+              <TableCell align="right">
                 {new Date(row.birthDate).toLocaleDateString()}
               </TableCell>
-              <TableCell style={{ width: 20}} align="right">
+              <TableCell align="right">
                 {row.sex}
               </TableCell>
-              <TableCell style={{ width: 20}} align="right">
+              <TableCell align="right">
                 {row.polisOms}
               </TableCell>
-              <TableCell style={{ width: 20}} align="right">
+              <TableCell align="right">
                 {row.adress}
               </TableCell>
             </TableRow>
@@ -198,9 +288,9 @@ export default function ChildTableNew() {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TablePagination
+            <TablePagination className="pagination"
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
+              colSpan={0}
               count={searchedChildrens.length}
               rowsPerPage={rowsPerPage}
               page={page}
@@ -239,6 +329,9 @@ export default function ChildTableNew() {
 
   async function Add(e){
     e.preventDefault()
+    const formData = new FormData();
+    formData.append("surname",surname);
+    console.log(formData);
     console.log(name)
     console.log(surname)
     console.log(fathername)
@@ -249,7 +342,11 @@ export default function ChildTableNew() {
     setCreateModal(false)
   }
   async function Delete(){
-
+    console.log(change_arr.name)
+    console.log(change_arr.surname)
+  }
+  async function SaveChange(e){
+    console.log(change_arr)
   }
   
   async function Get() {
