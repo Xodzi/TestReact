@@ -35,18 +35,7 @@ namespace TestReact.Controllers
 
             
             return await _context.Children
-               // .Skip((page-1)*(int)pageResults)
-               // .Take((int)pageResults)
                 .ToListAsync();
-
-
-            //var response = new ChildResponse()
-            //{
-            //    Childs = childs,
-            //    Pages = (int)pageCount,
-            //    CurrentPage = page
-            //};
-            //return Ok(response);
         }
 
         // GET: api/Children/5
@@ -99,6 +88,7 @@ namespace TestReact.Controllers
         [HttpPost]
         public async Task<ActionResult<Child>> PostChild(Child child)
         {
+            //Console.WriteLine(child);
             _context.Children.Add(child);
             try
             {

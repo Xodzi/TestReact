@@ -48,7 +48,9 @@ export default function ChildTableNew() {
   }, [totalCount])
   
   const searchedChildrens = useMemo(() => {
-    return childrens.filter(child => child.surname.toLowerCase().includes(search.toLowerCase()))
+    var arr1 = childrens.filter(child => child.surname.toLowerCase().includes(search.toLowerCase()))
+    var arr2 = childrens.filter(child => child.childId == search)
+    return arr1.concat(arr2);
   }, [search,childrens])
 
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -60,30 +62,17 @@ export default function ChildTableNew() {
       setPage(newPage);
     };
     
-    function searchSelected () {
-      for(let i=0; i < childrens.length; i++){
-        if(childrens[i].childId==selectedRow){
-          return childrens[i];
-        }
-      }
-      console.log("error")
-      setSelectedRow(childrens[0].childId)
-      return childrens[0];
-    }
   
     const handleChangeRowsPerPage = (event) => {
       setRowsPerPage(parseInt(event.target.value, 10));
       setPage(0);
     };  
-    const handleSelectRow = (event) => {
-
-    };
 
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [fathername, setFathername] = useState("");
   const [date, setDate] = useState();
-  const [sex, setSex] = useState("");
+  const [sex, setSex] = useState("мужской");
   const [polis, setPolis] = useState("");
   const [adress, setAdress] = useState("");
 
@@ -103,21 +92,21 @@ export default function ChildTableNew() {
     <form>
       <h5>Создание и добавление</h5>
       <ChildInput 
-        value={name} 
+        value={surname} 
         onChange={e => setSurname(e.target.value)} 
         type="text" 
         placeholder="Фамилия"/>
 
-      <ChildInput type="text" placeholder="Имя" 
+      <ChildInput value={name} type="text" placeholder="Имя" 
       onChange={e => setName(e.target.value)} 
       />
-      <ChildInput type="text" placeholder="Отчество" 
+      <ChildInput value = {fathername} type="text" placeholder="Отчество" 
       onChange={e => setFathername(e.target.value)} 
       />
       <ChildInput type="date" placeholder="Дата рождения" 
       onChange={e => setDate(e.target.value)} 
       />
-      <select className="sex" onChange={e => setSex(e.target.value)}>
+      <select className="sex" value={sex} onChange={e => setSex(e.target.value)}>
       <option disabled> Пол </option>
       <option value="мужской"> мужской </option>
       <option value="женский"> женский </option>
@@ -176,7 +165,7 @@ export default function ChildTableNew() {
       />
       <select className="sex" onChange={e => setChange({
           ...change_arr,
-          surname: e.target.value
+          sex: e.target.value
         })}>
       <option disabled> Пол </option>
       <option value="мужской"> мужской </option>
@@ -186,7 +175,7 @@ export default function ChildTableNew() {
       value={change_arr.polisOms}
       onChange={e => setChange({
         ...change_arr,
-        polisOms: e.target.value
+        polis: e.target.value
       })}
       />
       <ChildInput type="text" placeholder="Адрес"
@@ -197,7 +186,7 @@ export default function ChildTableNew() {
       })}
       />
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-add" onClick={SaveChange}>
+        <button type="button" class="btn btn-add" onClick={Update}>
           Сохранить
         </button>
         <button type="button" class="btn btn-delete" onClick={() => setUpdateModal(false)}>
@@ -229,7 +218,6 @@ export default function ChildTableNew() {
       />
     </div>
   </div>
-
   <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
       <TableHead>
@@ -308,8 +296,10 @@ export default function ChildTableNew() {
       </Table>
     </TableContainer>
   </div>
+  //endregion
   );
 
+  //region stuff
   function sorting(col){  
     if(sort==="asc"){
       const sorted = [...childrens].sort((a,b)=>
@@ -326,28 +316,78 @@ export default function ChildTableNew() {
       setSort("asc");
       return;
   }
+  function searchSelected () {
+    for(let i=0; i < childrens.length; i++){
+      if(childrens[i].childId==selectedRow){
+        return childrens[i];
+      }
+    }
+    console.log("error")
+    setSelectedRow(childrens[0].childId)
+    return childrens[0];
+  }
 
+  //endregion
+  
+  //#region CRUD
   async function Add(e){
-    e.preventDefault()
-    const formData = new FormData();
-    formData.append("surname",surname);
-    console.log(formData);
-    console.log(name)
-    console.log(surname)
-    console.log(fathername)
-    console.log(date)
-    console.log(sex)
-    console.log(polis)
-    console.log(adress)
+    
+    const data = {
+      "ChildId": 151,
+      "Surname": surname,
+      "Name": name,
+      "Fathername": fathername,
+      "BirthDate":date,
+      "Sex": sex,
+      "PolisOms": polis,
+      "Adress": adress 
+    }
+    const response = await fetch("api/Children/",{
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },  
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+    console.log(data)
     setCreateModal(false)
+  }
+  async function Update(){
+    console.log('update')
+    const data = {
+      "ChildId": 151,
+      "Surname": change_arr.surname,
+      "Name": change_arr.name,
+      "Fathername": change_arr.fathername,
+      "BirthDate": change_arr.date,
+      "Sex": change_arr.sex,
+      "PolisOms": change_arr.polis,
+      "Adress": change_arr.adress 
+    }
+    console.log(data.ChildId)
+    const response = await fetch("api/Children/"+data.ChildId,{
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },  
+      method: 'PUT',
+      body: JSON.stringify(data)
+    }).then((response)=>{
+      if(response.ok){
+        
+      }
+      else{
+        alert("error update")
+      }
+    });
   }
   async function Delete(){
     console.log(change_arr.name)
     console.log(change_arr.surname)
   }
-  async function SaveChange(e){
-    console.log(change_arr)
-  }
+
+  //#endregion
   
   async function Get() {
     const response = await fetch("api/Children/");
@@ -357,43 +397,4 @@ export default function ChildTableNew() {
     setChildrens(data);
     setLoading(false);
   }
- /* <table className="table table-striped" aria-labelledby="tabelLabel">
-        <thead>
-          <tr>
-            <th onClick={()=>sorting("childId")}>id</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Отчество</th>
-            <th>Дата рождения</th>
-            <th>Пол</th>
-            <th>Полис</th>
-            <th>Адрес</th>
-          </tr>
-        </thead>
-        <tbody>
-          {searchedChildrens.slice(10*page,10*page+10).map((children) => (
-            <tr
-              key={children.childId}
-              onClick={() => {
-                setSelectedRow(children.childId);
-                console.log(selectedRow);
-              }}
-              className={selectedRow === children.childId ? "selected" : ""}
-            >
-              <td>{children.childId}</td>
-              <td>{children.name}</td>
-              <td>{children.surname}</td>
-              <td>{children.fathername}</td>
-              <td>{new Date(children.birthDate).toLocaleDateString()}</td>
-              <td>{children.sex}</td>
-              <td>{children.polisOms}</td>
-              <td>{children.adress}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="pagination">
-        <Pagination count={10} page={page} variant="outlined" shape="rounded" onChange={handleChangePage}/>
-      </div>
-    </div> */
 }
