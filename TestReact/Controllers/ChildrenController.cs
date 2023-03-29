@@ -15,11 +15,6 @@ namespace TestReact.Controllers
     {
         private readonly ClinicContext _context;
 
-        private int _totalCount;
-        private int? _currentPage;
-        private int? _pageSize;
-        private int? _totalPages;
-
         public ChildrenController(ClinicContext context)
         {
             _context = context;
@@ -29,31 +24,14 @@ namespace TestReact.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Child>>> GetChildren()
         {
-            var pageResults = 10f;
-            var pageCount = Math.Ceiling(_context.Children.Count()/pageResults);
 
+            var test = _context.Mkb10s.ToList();
 
             
             return await _context.Children
                 .ToListAsync();
         }
 
-        // GET: api/Children/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Child>> GetChild(int id)
-        //{
-        //    var child = await _context.Children.FindAsync(id);
-
-        //    if (child == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return child;
-        //}
-
-        // PUT: api/Children/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChild(int id, Child child)
         {

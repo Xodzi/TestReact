@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TestReact.Models;
 using TestReact.Controllers;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddControllersWithViews();
+//builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllers().AddControllersAsServices();
 
 builder.Services.AddDbContext<ClinicContext>(options => options.UseSqlServer(connection));
 
@@ -21,6 +24,22 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+//var optionsBuilder = new DbContextOptionsBuilder<ClinicContext>();
+//var options = optionsBuilder
+//    .UseSqlServer(connection)
+//    .Options;
+
+//using (ClinicContext db = new ClinicContext(options))
+//{
+//    var users = db.Mkb10s.ToList();
+//    foreach (Mkb10 u in users)
+//    {
+//        Console.WriteLine(u.Code);
+//    }
+//}
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
@@ -31,5 +50,6 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html");
+
 
 app.Run();
