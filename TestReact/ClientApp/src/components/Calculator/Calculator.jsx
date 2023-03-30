@@ -80,7 +80,6 @@ export default function Calculator() {
           <button type="button" class="btn btn-add" onClick={Calc}>
           Расчитать
           </button>
-          {gender}
           <div className="results">
           <P>
           Вес: {weight}  <br/>
@@ -107,8 +106,9 @@ export default function Calculator() {
              setCurrentH(Height[i])
              return
           } else { //low
-             let min = parseFloat(Height[i].low.substring(0, 4).replace(',', '.'))
-             let max = parseFloat(Height[i].low.substring(5, 9).replace(',', '.'))
+            let arr = Height[i].low.split('–')
+            let min = parseFloat(arr[0].replace(',','.').replace(' ',''))
+            let max = parseFloat(arr[1].replace(',','.').replace(' ',''))
              if (height >= min && height <= max) {
                 setResH({
                    class: 'low',
@@ -117,8 +117,13 @@ export default function Calculator() {
                 setCurrentH(Height[i])
                 return
              } else { //med
-                let min = parseFloat(Height[i].medium.substring(0, 4).replace(',', '.'))
-                let max = parseFloat(Height[i].medium.substring(5, 9).replace(',', '.'))
+                let arr = Height[i].medium.split('–')
+                let min = parseFloat(arr[0].replace(',','.'))
+                let max = parseFloat(arr[1].replace(',','.'))
+
+                console.log(min)
+                console.log(max)
+                console.log(height)
                 if (height >= min && height <= max) {
                    setResH({
                       class: 'medium',
@@ -127,8 +132,9 @@ export default function Calculator() {
                    setCurrentH(Height[i])
                    return
                 } else { //high
-                   let min = parseFloat(Height[i].higher.substring(0, 4).replace(',', '.'))
-                   let max = parseFloat(Height[i].higher.substring(5, 9).replace(',', '.'))
+                  let arr = Height[i].higher.split('–')
+                  let min = parseFloat(arr[0].replace(',','.'))
+                  let max = parseFloat(arr[1].replace(',','.'))
                    if (height >= min && height <= max) {
                       setResH({
                          class: 'higher',
@@ -158,8 +164,9 @@ function ComutHF() {
            })
            setCurrentH(Height[i])
         } else { //low
-           let min = parseFloat(HeightF[i].low.substring(0, 4).replace(',', '.'))
-           let max = parseFloat(HeightF[i].low.substring(5, 9).replace(',', '.'))
+         let arr = Height[i].low.split('–')
+         let min = parseFloat(arr[0].replace(',','.'))
+         let max = parseFloat(arr[1].replace(',','.'))
            if (height >= min && height <= max) {
               setResH({
                  class: 'low',
@@ -167,8 +174,9 @@ function ComutHF() {
               })
               setCurrentH(Height[i])
            } else { //med
-              let min = parseFloat(HeightF[i].medium.substring(0, 4).replace(',', '.'))
-              let max = parseFloat(HeightF[i].medium.substring(5, 9).replace(',', '.'))
+            let arr = Height[i].medium.split('–')
+            let min = parseFloat(arr[0].replace(',','.'))
+            let max = parseFloat(arr[1].replace(',','.'))
               if (height >= min && height <= max) {
                  setResH({
                     class: 'medium',
@@ -176,8 +184,9 @@ function ComutHF() {
                  })
                  setCurrentH(Height[i])
               } else { //high
-                 let min = parseFloat(HeightF[i].higher.substring(0, 4).replace(',', '.'))
-                 let max = parseFloat(HeightF[i].higher.substring(5, 9).replace(',', '.'))
+               let arr = Height[i].higher.split('–')
+               let min = parseFloat(arr[0].replace(',','.'))
+               let max = parseFloat(arr[1].replace(',','.'))
                  if (height >= min && height <= max) {
                     setResH({
                        class: 'higher',
