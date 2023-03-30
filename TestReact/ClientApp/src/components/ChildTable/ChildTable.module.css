@@ -1,7 +1,7 @@
-.css-90oupa-MuiTableCell-root{
-    width: 10px;
+.pagination{
+    width: 50px;
 }
-table, th, td {
-    width: auto;
-    color: red;
+.row{
+    width: 30px;
+    height: 10px;
 }

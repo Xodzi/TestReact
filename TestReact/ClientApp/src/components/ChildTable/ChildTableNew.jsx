@@ -22,7 +22,7 @@ export default function ChildTableNew() {
     name:"",
     surname: "",
     fathername: "",
-    birthDate: "",
+    date: Date,
     sex: "",
     polis: "",
     adress: ""
@@ -39,8 +39,6 @@ export default function ChildTableNew() {
   const [totalCount,setTotalCount] = useState(0);
   const [page, setPage] = useState(0);
 
-
-
   let pages = useMemo(() => {
     let pagesArray = []
     for(let i=0;i<totalCount;i++){
@@ -51,11 +49,11 @@ export default function ChildTableNew() {
   
   const searchedChildrens = useMemo(() => {
     var arr1 = childrens.filter(child => child.surname.toLowerCase().includes(search.toLowerCase()))
-    var arr2 = childrens.filter(child => child.polisOms == search)
+    var arr2 = childrens.filter(child => child.childId == search)
     return arr1.concat(arr2);
   }, [search,childrens])
 
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - searchedChildrens.length) : 0;
@@ -77,15 +75,6 @@ export default function ChildTableNew() {
   const [sex, setSex] = useState("мужской");
   const [polis, setPolis] = useState("");
   const [adress, setAdress] = useState("");
-
-  const onChangeDate = e => {
-    const newDate = new Date(e.target.value).format('YYYY-MM-DD');
-    setChange({
-      ...change_arr,
-      date: e.target.value
-    })
-    console.log(newDate); //value picked from date picker
-  };
 
   useEffect(() => {
     Get();
@@ -168,16 +157,16 @@ export default function ChildTableNew() {
       })} 
       />
       <ChildInput type="date" placeholder="Дата рождения"
-      value={change_arr.birthDate.substring(0,10)}
+     
       onChange={e => setChange({
         ...change_arr,
-        birthDate: e.target.value
+        date: e.target.value
       })} 
       />
       <select className="sex" onChange={e => setChange({
-        ...change_arr,
-        date: e.target.value
-      })}>
+          ...change_arr,
+          sex: e.target.value
+        })}>
       <option disabled> Пол </option>
       <option value="мужской"> мужской </option>
       <option value="женский"> женский </option>
@@ -230,16 +219,17 @@ export default function ChildTableNew() {
     </div>
   </div>
   <TableContainer component={Paper}>
-      <Table aria-label="custom pagination table">
+      <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
       <TableHead>
           <TableRow>
-            <TableCell align="justify">Фамилия</TableCell>
-            <TableCell align="justify">Имя</TableCell>
-            <TableCell align="justify">Отчество</TableCell>
-            <TableCell align="justify">Дата</TableCell>
-            <TableCell align="justify">Пол</TableCell>
-            <TableCell align="justify">Полис</TableCell>
-            <TableCell align="justify">Адрес</TableCell>
+            <TableCell>Id</TableCell>
+            <TableCell align="right">Фамилия</TableCell>
+            <TableCell align="right">Имя</TableCell>
+            <TableCell align="right">Отчество</TableCell>
+            <TableCell align="right">Дата</TableCell>
+            <TableCell align="right">Пол</TableCell>
+            <TableCell align="right">Полис</TableCell>
+            <TableCell align="right">Адрес</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -251,25 +241,29 @@ export default function ChildTableNew() {
               setSelectedRow(row.childId);
               console.log(selectedRow);
             }} className={selectedRow === row.childId ? "row selected" : "row"}>
-              <TableCell align="justify" >
+              
+              <TableCell >
+                {row.childId}
+              </TableCell>
+              <TableCell align="right" >
                 {row.surname}
               </TableCell>
-              <TableCell align="justify" >
+              <TableCell align="right" >
                 {row.name}
               </TableCell>
-              <TableCell align="justify">
+              <TableCell align="right">
                 {row.fathername}
               </TableCell>
-              <TableCell align="justify">
+              <TableCell align="right">
                 {new Date(row.birthDate).toLocaleDateString()}
               </TableCell>
-              <TableCell align="justify">
+              <TableCell align="right">
                 {row.sex}
               </TableCell>
-              <TableCell align="justify">
+              <TableCell align="right">
                 {row.polisOms}
               </TableCell>
-              <TableCell align="justify">
+              <TableCell align="right">
                 {row.adress}
               </TableCell>
             </TableRow>
@@ -283,7 +277,7 @@ export default function ChildTableNew() {
         <TableFooter>
           <TableRow>
             <TablePagination className="pagination"
-              rowsPerPageOptions={[10, 15, 25, { label: 'All', value: -1 }]}
+              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={0}
               count={searchedChildrens.length}
               rowsPerPage={rowsPerPage}
@@ -336,11 +330,10 @@ export default function ChildTableNew() {
   //endregion
   
   //#region CRUD
-
   async function Add(e){
     
     const data = {
-      "ChildId": childrens[childrens.length].ChildId+1,
+      "ChildId": 151,
       "Surname": surname,
       "Name": name,
       "Fathername": fathername,
@@ -363,7 +356,7 @@ export default function ChildTableNew() {
   async function Update(){
     console.log('update')
     const data = {
-      "ChildId": selectedRow,
+      "ChildId": 151,
       "Surname": change_arr.surname,
       "Name": change_arr.name,
       "Fathername": change_arr.fathername,
