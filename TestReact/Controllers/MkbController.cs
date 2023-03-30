@@ -9,41 +9,53 @@ using TestReact.Models;
 
 namespace TestReact.Controllers
 {
-    
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class Mkb10Controller : ControllerBase
+    public class MkbController : ControllerBase
     {
         private readonly ClinicContext _context;
 
-        public Mkb10Controller(ClinicContext context)
+        public MkbController(ClinicContext context)
         {
             _context = context;
         }
 
-        // GET: api/Mkb10
+        // GET: api/Mkb
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Mkb>>> Get()
+        public IEnumerable<Mkb> Get()
+        {
+            return _context.Mkb10s.ToList();
+        }
+
+        // GET: api/Mkb/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Mkb>> GetMkb(int id)
         {
           if (_context.Mkb10s == null)
           {
               return NotFound();
           }
-            return await _context.Mkb10s.ToListAsync();
+            var mkb = await _context.Mkb10s.FindAsync(id);
+
+            if (mkb == null)
+            {
+                return NotFound();
+            }
+
+            return mkb;
         }
 
-
-        // PUT: api/Mkb10/5
+        // PUT: api/Mkb/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMkb10(int id, Mkb mkb10)
+        public async Task<IActionResult> PutMkb(int id, Mkb mkb)
         {
-            if (id != mkb10.Id)
+            if (id != mkb.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(mkb10).State = EntityState.Modified;
+            _context.Entry(mkb).State = EntityState.Modified;
 
             try
             {
@@ -51,7 +63,7 @@ namespace TestReact.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Mkb10Exists(id))
+                if (!MkbExists(id))
                 {
                     return NotFound();
                 }
@@ -64,23 +76,23 @@ namespace TestReact.Controllers
             return NoContent();
         }
 
-        // POST: api/Mkb10
+        // POST: api/Mkb
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Mkb>> PostMkb10(Mkb mkb10)
+        public async Task<ActionResult<Mkb>> PostMkb(Mkb mkb)
         {
           if (_context.Mkb10s == null)
           {
               return Problem("Entity set 'ClinicContext.Mkb10s'  is null.");
           }
-            _context.Mkb10s.Add(mkb10);
+            _context.Mkb10s.Add(mkb);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (Mkb10Exists(mkb10.Id))
+                if (MkbExists(mkb.Id))
                 {
                     return Conflict();
                 }
@@ -90,30 +102,30 @@ namespace TestReact.Controllers
                 }
             }
 
-            return CreatedAtAction("GetMkb10", new { id = mkb10.Id }, mkb10);
+            return CreatedAtAction("GetMkb", new { id = mkb.Id }, mkb);
         }
 
-        // DELETE: api/Mkb10/5
+        // DELETE: api/Mkb/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMkb10(int id)
+        public async Task<IActionResult> DeleteMkb(int id)
         {
             if (_context.Mkb10s == null)
             {
                 return NotFound();
             }
-            var mkb10 = await _context.Mkb10s.FindAsync(id);
-            if (mkb10 == null)
+            var mkb = await _context.Mkb10s.FindAsync(id);
+            if (mkb == null)
             {
                 return NotFound();
             }
 
-            _context.Mkb10s.Remove(mkb10);
+            _context.Mkb10s.Remove(mkb);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool Mkb10Exists(int id)
+        private bool MkbExists(int id)
         {
             return (_context.Mkb10s?.Any(e => e.Id == id)).GetValueOrDefault();
         }
