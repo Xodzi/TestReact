@@ -25,6 +25,9 @@ code {
 .btn-update{
   background-color: #1b6ec3;
 }
+.btn-toolbar{
+  margin-bottom: 10px;
+}
 
 .sex{
   width: 100%;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import "../../custom.css";
+import cl from "./ChildTable.module.css"
 import ChildInput from "../ChildInput/ChildInput";
 import ChildModal from "../ChildModal/ChildModal";
 import TableHead from '@mui/material/TableHead';
@@ -11,6 +12,12 @@ import TableFooter from '@mui/material/TableFooter';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 
@@ -25,7 +32,11 @@ export default function ChildTableNew() {
     birthDate: "",
     sex: "",
     polis: "",
-    adress: ""
+    adress: "",
+    health: "",
+    diagnosis: "",
+    benefits: false,
+    other: ""
   });
   const [updateModal, setUpdateModal] = useState(false);
 
@@ -33,13 +44,10 @@ export default function ChildTableNew() {
   const [selectedRow, setSelectedRow] = useState(-1);
   const [loading, setLoading] = useState(true);
   const [createModal, setCreateModal] = useState(false);
-  const [sort, setSort] = useState("asc")
   const [search, setSearch] = useState('')
 
   const [totalCount,setTotalCount] = useState(0);
   const [page, setPage] = useState(0);
-
-
 
   let pages = useMemo(() => {
     let pagesArray = []
@@ -52,10 +60,11 @@ export default function ChildTableNew() {
   const searchedChildrens = useMemo(() => {
     var arr1 = childrens.filter(child => child.surname.toLowerCase().includes(search.toLowerCase()))
     var arr2 = childrens.filter(child => child.polisOms == search)
-    return arr1.concat(arr2);
+    var arr3 = childrens.filter(child => child.childId == search)
+    return arr1.concat(arr2).concat(arr3);
   }, [search,childrens])
 
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - searchedChildrens.length) : 0;
@@ -96,7 +105,6 @@ export default function ChildTableNew() {
     <p>
       <em>Loading...</em>
     </p> : 
-    
   <div>
     <div>
   <ChildModal visible={createModal} setVisible={setCreateModal}>
@@ -119,8 +127,8 @@ export default function ChildTableNew() {
       />
       <select className="sex" value={sex} onChange={e => setSex(e.target.value)}>
       <option disabled> Пол </option>
-      <option value="мужской"> мужской </option>
-      <option value="женский"> женский </option>
+      <option value="мужской">мужской</option>
+      <option value="женский">женский</option>
       </select>
       <ChildInput type="text" placeholder="Полис" 
       onChange={e => setPolis(e.target.value)}
@@ -179,8 +187,8 @@ export default function ChildTableNew() {
         date: e.target.value
       })}>
       <option disabled> Пол </option>
-      <option value="мужской"> мужской </option>
-      <option value="женский"> женский </option>
+      <option value="мужской" selected={change_arr.sex=="мужской"}>мужской</option>
+      <option value="женский" selected={change_arr.sex=="женский"}>женский</option>
       </select>
       <ChildInput type="text" placeholder="Полис" 
       value={change_arr.polisOms}
@@ -211,13 +219,13 @@ export default function ChildTableNew() {
   <div class="btn-toolbar justify-content-between" aria-label="Toolbar with button groups">
     <div class="btn-group" role="group" aria-label="First group">
       <button type="button" class="btn btn-add" onClick={() => setCreateModal(true)}>
-        Add
+        Добавить
       </button>
       <button type="button" class="btn btn-update" onClick={() => {setChange(searchSelected()); setUpdateModal(true)}}>
-        Update
+        Редактировать
       </button>
       <button type="button" class="btn btn-delete" onClick={Delete}>
-        Delete
+        Удалить 
       </button>
     </div>
     <div class="input-group">
@@ -228,7 +236,7 @@ export default function ChildTableNew() {
       placeholder="Поиск"
       />
     </div>
-  </div>
+  </div> 
   <TableContainer component={Paper}>
       <Table aria-label="custom pagination table">
       <TableHead>
@@ -240,6 +248,7 @@ export default function ChildTableNew() {
             <TableCell align="justify">Пол</TableCell>
             <TableCell align="justify">Полис</TableCell>
             <TableCell align="justify">Адрес</TableCell>
+            <TableCell align="justify"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -247,32 +256,7 @@ export default function ChildTableNew() {
             ? searchedChildrens.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : searchedChildrens
           ).map((row) => (
-            <TableRow key={row.childId} onClick={() => {
-              setSelectedRow(row.childId);
-              console.log(selectedRow);
-            }} className={selectedRow === row.childId ? "row selected" : "row"}>
-              <TableCell align="justify" >
-                {row.surname}
-              </TableCell>
-              <TableCell align="justify" >
-                {row.name}
-              </TableCell>
-              <TableCell align="justify">
-                {row.fathername}
-              </TableCell>
-              <TableCell align="justify">
-                {new Date(row.birthDate).toLocaleDateString()}
-              </TableCell>
-              <TableCell align="justify">
-                {row.sex}
-              </TableCell>
-              <TableCell align="justify">
-                {row.polisOms}
-              </TableCell>
-              <TableCell align="justify">
-                {row.adress}
-              </TableCell>
-            </TableRow>
+            <Row key={row.childId} row={row} selectedRow={selectedRow} setSelectedRow={setSelectedRow} Update={Update} />
           ))}
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows}}>
@@ -302,26 +286,10 @@ export default function ChildTableNew() {
       </Table>
     </TableContainer>
   </div>
-  //endregion
   );
+  //endregion
 
-  //region stuff
-  function sorting(col){  
-    if(sort==="asc"){
-      const sorted = [...childrens].sort((a,b)=>
-      a[col] > b[col] ? 1 : -1
-      );
-      setChildrens(sorted);
-      setSort("desc");
-      return;
-    }
-    const sorted = [...childrens].sort((a,b)=>
-      a[col] < b[col] ? 1 : -1
-      );
-      setChildrens(sorted);
-      setSort("asc");
-      return;
-  }
+  //#region stuff
   function searchSelected () {
     for(let i=0; i < childrens.length; i++){
       if(childrens[i].childId==selectedRow){
@@ -338,30 +306,36 @@ export default function ChildTableNew() {
   //#region CRUD
 
   async function Add(e){
+
+    console.log(childrens[childrens.length-1].childId+1)
     
     const data = {
-      "ChildId": childrens[childrens.length].ChildId+1,
-      "Surname": surname,
-      "Name": name,
-      "Fathername": fathername,
-      "BirthDate":date,
-      "Sex": sex,
-      "PolisOms": polis,
-      "Adress": adress 
+      "childId": childrens[childrens.length-1].childId+1,
+      "surname": surname,
+      "name": name,
+      "fathername": fathername,
+      "birthDate": date,
+      "sex": sex,
+      "polisOms": polis,
+      "adress": adress,
+      "healthGroup": null,
+      "diagnosis": null,
+      "benefits": null,
+      "other": null
     }
-    const response = await fetch("api/Children/",{
+
+    const response = await fetch("api/Children",{
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },  
       method: 'POST',
       body: JSON.stringify(data)
     });
-    console.log(data)
+    Get()
     setCreateModal(false)
   }
+
   async function Update(){
-    console.log('update')
     const data = {
       "ChildId": selectedRow,
       "Surname": change_arr.surname,
@@ -370,9 +344,12 @@ export default function ChildTableNew() {
       "BirthDate": change_arr.date,
       "Sex": change_arr.sex,
       "PolisOms": change_arr.polis,
-      "Adress": change_arr.adress 
+      "Adress": change_arr.adress,
+      "HealthGroup": "",
+      "Diagnosis": "",
+      "Benefits": false,
+      "Other": ""
     }
-    console.log(data.ChildId)
     const response = await fetch("api/Children/"+data.ChildId,{
       headers: {
         'Accept': 'application/json',
@@ -389,19 +366,97 @@ export default function ChildTableNew() {
       }
     });
   }
-  async function Delete(){
-    console.log(change_arr.name)
-    console.log(change_arr.surname)
-  }
 
-  //#endregion
-  
+  async function Delete(){
+    const response = await fetch("api/Children/"+selectedRow,{ 
+      method: 'Delete',
+    }).then((response)=>{
+      if(response.ok){
+      for(let i=0;i<childrens.length;i++){
+        if(childrens[i].childId==selectedRow){
+          childrens.slice(i,1)
+          const res = childrens
+          console.log(res)
+          setChildrens(res)
+          Get()
+        }
+      }
+      }
+      else{
+        alert("error delete")
+      }
+    });
+    
+  }
   async function Get() {
     const response = await fetch("api/Children/");
     const data = await response.json();
-    console.log(data.length)
+    console.log(data)
     setTotalCount(Math.ceil(data.length/10));
     setChildrens(data);
     setLoading(false);
   }
+
+  //#endregion
+}
+//#region Row
+function Row(props) {
+
+  const { row } = props;
+  const [open, setOpen] = useState(false);
+
+  return (
+    <React.Fragment>
+      <TableRow
+      onClick={() => {
+        props.setSelectedRow(row.childId);
+        console.log(props.selectedRow);
+      }} className={props.selectedRow === row.childId ? "row selected" : "row"}
+      sx={{ '& > *': { borderBottom: 'unset' } }}>
+        <TableCell align="justify">{row.surname}</TableCell>
+        <TableCell align="justify">{row.name}</TableCell>
+        <TableCell align="justify">{row.fathername}</TableCell>
+        <TableCell align="justify">{new Date(row.birthDate).toLocaleDateString()}</TableCell>
+        <TableCell align="justify">{row.sex}</TableCell>
+        <TableCell align="justify">{row.polisOms}</TableCell>
+        <TableCell align="justify">{row.adress}</TableCell>
+        <TableCell align="justify">
+          <IconButton
+            aria-label="expand row"
+            size="small"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          </IconButton>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Box sx={{ margin: 1 }}>
+              <Table size="small">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Группа здоровья: <textarea value={row.health}
+                    style={{marginRight: "5px"}}
+                    /></TableCell>
+                    <TableCell>Диагноз: <textarea value={row.diagnosis}
+                    style={{marginRight: "5px"}} /></TableCell>
+                    <TableCell align="justify">Льгота: <textarea value={row.benefits} /></TableCell>
+                    <TableCell align="justify">Прочее: <textarea value={row.other} /></TableCell>
+                    <TableCell align="justify">
+                      <button type="button"  class="btn btn-add" onClick={()=>console.log(row)}>
+                        Сохранить
+                      </button>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+              </Table>
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
+    </React.Fragment>
+  );
+  //#endregion
 }

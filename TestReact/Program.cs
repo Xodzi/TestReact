@@ -44,6 +44,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.MapControllerRoute(
+    name: "mkb",
+    pattern: "mkb/{id?}",
+    defaults: new { controller = "Children", action = "GetMkb10s" }
+    );
 
 app.MapControllerRoute(
     name: "default",

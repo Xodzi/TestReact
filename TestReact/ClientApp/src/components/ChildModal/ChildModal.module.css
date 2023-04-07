@@ -7,6 +7,7 @@
     display: none;
     background: rgba(0,0,0, 0.5);
     text-align: right;
+    
 }
 
 .ChildModalContent {
@@ -17,7 +18,22 @@
 }
 
 .ChildModal.active {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     display: flex;
-    justify-content: center;
+    flex-flow: column nowrap;
+    justify-content: center; /* см. ниже */
     align-items: center;
+    z-index: 99;
+    /* Чтобы окно не прилипало к границе
+    браузера установим отступы */
+    padding:30px 0;
+    
+
 }

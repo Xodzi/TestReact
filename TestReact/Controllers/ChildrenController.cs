@@ -107,5 +107,19 @@ namespace TestReact.Controllers
         {
             return _context.Children.Any(e => e.ChildId == id);
         }
+
+        #region MKB10
+        [HttpGet]
+        [Route("api/Children/mkb")]
+        public async Task<ActionResult<IEnumerable<Mkb10>>> GetMkb10s()
+        {
+            if (_context.Mkb10s == null)
+            {
+                return NotFound();
+            }
+            return await _context.Mkb10s.ToListAsync();
+        }
+
+        #endregion
     }
 }

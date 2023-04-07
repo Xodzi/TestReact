@@ -20,4 +20,12 @@ public partial class Child
     public string? PolisOms { get; set; }
 
     public string? Adress { get; set; }
+
+    public short? HealthGroup { get; set; }
+
+    public string? Diagnosis { get; set; }
+
+    public bool? Benefits { get; set; }
+
+    public string? Other { get; set; }
 }
