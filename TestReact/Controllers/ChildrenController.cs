@@ -24,10 +24,15 @@ namespace TestReact.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Child>>> GetChildren()
         {
+<<<<<<< Updated upstream
 
             var test = _context.Mkb10s.ToList();
 
             
+=======
+            var pageResults = 10f;
+            var pageCount = Math.Ceiling(_context.Children.Count()/pageResults);
+>>>>>>> Stashed changes
             return await _context.Children
                 .ToListAsync();
         }
