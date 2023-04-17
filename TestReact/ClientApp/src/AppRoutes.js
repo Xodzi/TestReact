@@ -3,6 +3,7 @@ import { Home } from "./components/Home";
 import ChildTableNew from "./components/ChildTable/ChildTableNew";
 import Calculator from "./components/Calculator/Calculator";
 import Table from "./components/CollapsibleTable";
+import Planner from './components/Planner/planner';
 
 const AppRoutes = [
   {
@@ -19,6 +20,10 @@ const AppRoutes = [
   {
     path: "/fetch-data",
     element: <Table />,
+  },
+  {
+    path: "/planner",
+    element: <Planner />
   },
 
 ];

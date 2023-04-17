@@ -6,6 +6,7 @@ import female from '../../image/female.svg'
 import '../../calculator.css';
 import Height from './heightM.json'
 import HeightF from './heightF.json'
+import Weight from './weight.json'
 
 export default function Calculator() {
 
@@ -23,6 +24,10 @@ export default function Calculator() {
   class: "",
   status: ""
  })
+ const [resW, setResW] = useState({
+   class: "",
+   status: ""
+ })
 
  const [currentH, setCurrentH] = useState()
 
@@ -33,7 +38,10 @@ export default function Calculator() {
  }
 
  function Calc(){
-  if(gender==='boy') ComutHM()
+  if(gender==='boy'){
+   ComutHM()
+   ComutWM()
+  }
   else ComutHF()
  }
 
@@ -81,8 +89,8 @@ export default function Calculator() {
           Расчитать
           </button>
           <div className="results">
-          <P>
-          Вес: {weight}  <br/>
+          <P className={resW.class}>
+          Вес: {weight} {resW.status}  <br/>
           </P>
           <P className={resH.class}>
           Рост: {height} {resH.status} <br/>
@@ -201,5 +209,60 @@ function ComutHF() {
                     setCurrentH(Height[i])
                  }}}}}}
 }
+
+function ComutWM() {
+   for (let i = 0; i < Weight.length; i++) {
+      if (Weight[i].year == age.years && Weight[i].month == age.months) {
+         console.log('sw')
+         if (weight <= Weight[i].verylow) { // vl
+            setResW({
+               class: 'verylow',
+               status: "низкорослый"
+            })
+            //setCurrentH(Height[i])
+            return
+         } else { //low
+           let arr = Weight[i].low.split('–')
+           let min = parseFloat(arr[0].replace(',','.').replace(' ',''))
+           let max = parseFloat(arr[1].replace(',','.').replace(' ',''))
+            if (weight >= min && weight <= max) {
+               setResW({
+                  class: 'low',
+                  status: "ниже нормы"
+               })
+               //setCurrentH(Height[i])
+               return
+            } else { //med
+               let arr = Weight[i].medium.split('–')
+               let min = parseFloat(arr[0].replace(',','.'))
+               let max = parseFloat(arr[1].replace(',','.'))
+               if (weight >= min && weight <= max) {
+                  setResW({
+                     class: 'medium',
+                     status: "норма"
+                  })
+                  //setCurrentH(Height[i])
+                  return
+               } else { //high
+                 let arr = Weight[i].higher.split('–')
+                 let min = parseFloat(arr[0].replace(',','.'))
+                 let max = parseFloat(arr[1].replace(',','.'))
+                  if (weight >= min && weight <= max) {
+                     setResH({
+                        class: 'higher',
+                        status: "выше нормы"
+                     })
+                     //setCurrentW(Weight[i])
+                     return
+                  } else if (weight >= Weight[i].vetyhigher) { //vh
+                     setResW({
+                        class: 'veryh',
+                        status: "сильно выше нормы"
+                     })
+                     //setCurrentH(Height[i])
+                     return
+                   }}}}}}
+}
+
 
 }

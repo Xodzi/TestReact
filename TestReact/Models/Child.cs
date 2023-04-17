@@ -25,7 +25,7 @@ public partial class Child
 
     public string? Diagnosis { get; set; }
 
-    public bool? Benefits { get; set; }
+    public string? Benefits { get; set; }
 
     public string? Other { get; set; }
 }

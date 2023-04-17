@@ -31,11 +31,11 @@ export default function ChildTableNew() {
     fathername: "",
     birthDate: "",
     sex: "",
-    polis: "",
+    polisOms: "",
     adress: "",
     health: "",
     diagnosis: "",
-    benefits: false,
+    benefits: "",
     other: ""
   });
   const [updateModal, setUpdateModal] = useState(false);
@@ -87,7 +87,7 @@ export default function ChildTableNew() {
   const [polis, setPolis] = useState("");
   const [adress, setAdress] = useState("");
 
-  const onChangeDate = e => {
+  const onChangeDate = e => { //муор но пока не убираю мало ли
     const newDate = new Date(e.target.value).format('YYYY-MM-DD');
     setChange({
       ...change_arr,
@@ -179,7 +179,7 @@ export default function ChildTableNew() {
       value={change_arr.birthDate.substring(0,10)}
       onChange={e => setChange({
         ...change_arr,
-        birthDate: e.target.value
+        birthDate: e.target.value,
       })} 
       />
       <select className="sex" onChange={e => setChange({
@@ -194,7 +194,7 @@ export default function ChildTableNew() {
       value={change_arr.polisOms}
       onChange={e => setChange({
         ...change_arr,
-        polis: e.target.value
+        polisOms: e.target.value
       })}
       />
       <ChildInput type="text" placeholder="Адрес"
@@ -332,25 +332,26 @@ export default function ChildTableNew() {
       body: JSON.stringify(data)
     });
     Get()
+    console.log(data)
     setCreateModal(false)
   }
 
   async function Update(){
     const data = {
-      "ChildId": selectedRow,
-      "Surname": change_arr.surname,
-      "Name": change_arr.name,
-      "Fathername": change_arr.fathername,
-      "BirthDate": change_arr.date,
-      "Sex": change_arr.sex,
-      "PolisOms": change_arr.polis,
-      "Adress": change_arr.adress,
-      "HealthGroup": "",
-      "Diagnosis": "",
-      "Benefits": false,
-      "Other": ""
+      "childId": selectedRow,
+      "surname": change_arr.surname,
+      "name": change_arr.name,
+      "fathername": change_arr.fathername,
+      "birthDate": change_arr.birthDate,
+      "sex": change_arr.sex,
+      "polisOms": change_arr.polisOms,
+      "adress": change_arr.adress,
+      "healthGroup": null,
+      "diagnosis": null,
+      "benefits": null,
+      "other": null
     }
-    const response = await fetch("api/Children/"+data.ChildId,{
+    const response = await fetch("api/Children/"+data.childId,{
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -359,7 +360,17 @@ export default function ChildTableNew() {
       body: JSON.stringify(data)
     }).then((response)=>{
       if(response.ok){
-        
+        const temp = childrens.map((c,i)=>{
+          if(i == selectedRow ){
+            return data
+          }else{
+            return c;
+            console.log(c)
+          }
+        });
+        setChildrens(temp)
+        setUpdateModal(false)
+
       }
       else{
         alert("error update")

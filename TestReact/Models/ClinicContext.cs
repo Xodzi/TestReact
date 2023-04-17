@@ -37,13 +37,14 @@ public partial class ClinicContext : DbContext
             entity.Property(e => e.Adress)
                 .HasMaxLength(255)
                 .HasColumnName("adress");
-            entity.Property(e => e.Benefits).HasColumnName("benefits");
+            entity.Property(e => e.Benefits)
+                .HasMaxLength(255)
+                .HasColumnName("benefits");
             entity.Property(e => e.BirthDate)
                 .HasColumnType("datetime")
                 .HasColumnName("birth_date");
             entity.Property(e => e.Diagnosis)
                 .HasMaxLength(255)
-                .IsFixedLength()
                 .HasColumnName("diagnosis");
             entity.Property(e => e.Fathername)
                 .HasMaxLength(255)
@@ -54,7 +55,6 @@ public partial class ClinicContext : DbContext
                 .HasColumnName("name");
             entity.Property(e => e.Other)
                 .HasMaxLength(255)
-                .IsFixedLength()
                 .HasColumnName("other");
             entity.Property(e => e.PolisOms)
                 .HasMaxLength(255)
