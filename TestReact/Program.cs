@@ -24,35 +24,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-
-//var optionsBuilder = new DbContextOptionsBuilder<ClinicContext>();
-//var options = optionsBuilder
-//    .UseSqlServer(connection)
-//    .Options;
-
-//using (ClinicContext db = new ClinicContext(options))
-//{
-//    var users = db.Mkb10s.ToList();
-//    foreach (Mkb10 u in users)
-//    {
-//        Console.WriteLine(u.Code);
-//    }
-//}
-
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.MapControllerRoute(
-    name: "mkb",
-    pattern: "mkb/{id?}",
-    defaults: new { controller = "Children", action = "GetMkb10s" }
-    );
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+app.MapControllers();
 
 app.MapFallbackToFile("index.html");
 

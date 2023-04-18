@@ -3,7 +3,7 @@ import { Home } from "./components/Home";
 import ChildTableNew from "./components/ChildTable/ChildTableNew";
 import Calculator from "./components/Calculator/Calculator";
 import Table from "./components/CollapsibleTable";
-import Planner from './components/Planner/planner';
+import Planner from './components/Planner/Planner';
 
 const AppRoutes = [
   {

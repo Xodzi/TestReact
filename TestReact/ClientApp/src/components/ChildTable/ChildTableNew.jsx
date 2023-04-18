@@ -369,6 +369,7 @@ export default function ChildTableNew() {
           }
         });
         setChildrens(temp)
+        Get()
         setUpdateModal(false)
 
       }
@@ -401,6 +402,7 @@ export default function ChildTableNew() {
   }
   async function Get() {
     const response = await fetch("api/Children/");
+    //test const response2 = await fetch("api/Mkb10/");
     const data = await response.json();
     console.log(data)
     setTotalCount(Math.ceil(data.length/10));
