@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TestReact.Models;
+using TestReact.Repository;
 
 namespace TestReact.Controllers
 {
@@ -14,19 +15,21 @@ namespace TestReact.Controllers
     public class ChildrenController : ControllerBase
     {
         private readonly ClinicContext _context;
+        private IChildrenRepository _childrenRepository;
 
         public ChildrenController(ClinicContext context)
         {
             _context = context;
+            _childrenRepository = new ChildrenRepository(context);
         }
 
         // GET: api/Children
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Child>>> GetChildren()
+        public async Task<IEnumerable<Child>> GetChildren()
         {
-            
-            return await _context.Children
-                .ToListAsync();
+            return await _childrenRepository.GetChildren();
+            //return await _context.Children
+            //    .ToListAsync();
         }
 
         [HttpPut("{id}")]
