@@ -24,9 +24,6 @@ namespace TestReact.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Child>>> GetChildren()
         {
-
-            var test = _context.Mkb10s.ToList();
-
             
             return await _context.Children
                 .ToListAsync();

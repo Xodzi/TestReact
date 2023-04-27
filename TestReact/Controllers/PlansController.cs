@@ -24,22 +24,22 @@ namespace TestReact.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Plan>>> GetPlans()
         {
-          if (_context.Plans == null)
+          if (_context.Tasks == null)
           {
-              return NotFound();
+                return NotFound();
           }
-            return await _context.Plans.ToListAsync();
+            return await _context.Tasks.ToListAsync();
         }
 
         // GET: api/Plans/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Plan>> GetPlan(int id)
         {
-          if (_context.Plans == null)
+          if (_context.Tasks == null)
           {
               return NotFound();
           }
-            var plan = await _context.Plans.FindAsync(id);
+            var plan = await _context.Tasks.FindAsync(id);
 
             if (plan == null)
             {
@@ -54,7 +54,7 @@ namespace TestReact.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPlan(int id, Plan plan)
         {
-            if (id != plan.PlanId)
+            if (id != plan.Id)
             {
                 return BadRequest();
             }
@@ -85,18 +85,18 @@ namespace TestReact.Controllers
         [HttpPost]
         public async Task<ActionResult<Plan>> PostPlan(Plan plan)
         {
-          if (_context.Plans == null)
+          if (_context.Tasks == null)
           {
               return Problem("Entity set 'ClinicContext.Plans'  is null.");
           }
-            _context.Plans.Add(plan);
+            _context.Tasks.Add(plan);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (PlanExists(plan.PlanId))
+                if (PlanExists(plan.Id))
                 {
                     return Conflict();
                 }
@@ -106,24 +106,24 @@ namespace TestReact.Controllers
                 }
             }
 
-            return CreatedAtAction("GetPlan", new { id = plan.PlanId }, plan);
+            return CreatedAtAction("GetPlan", new { id = plan.Id }, plan);
         }
 
         // DELETE: api/Plans/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlan(int id)
         {
-            if (_context.Plans == null)
+            if (_context.Tasks == null)
             {
                 return NotFound();
             }
-            var plan = await _context.Plans.FindAsync(id);
+            var plan = await _context.Tasks.FindAsync(id);
             if (plan == null)
             {
                 return NotFound();
             }
 
-            _context.Plans.Remove(plan);
+            _context.Tasks.Remove(plan);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -131,7 +131,7 @@ namespace TestReact.Controllers
 
         private bool PlanExists(int id)
         {
-            return (_context.Plans?.Any(e => e.PlanId == id)).GetValueOrDefault();
+            return (_context.Tasks?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

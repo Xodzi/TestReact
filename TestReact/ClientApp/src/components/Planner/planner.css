@@ -1,0 +1,13 @@
+.fc-day-today {
+    background-color: aqua !important;
+  }
+.fc-col-header-cell-cushion{
+    color: black !important;
+}
+.fc-event{
+    color: black !important;
+    font-size: 100%
+}
+.btn{
+    margin: 5px;
+}

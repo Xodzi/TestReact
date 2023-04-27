@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace TestReact.Models;
 
-public partial class Plan
+public partial class Task
 {
-    public int Id { get; set; }
+    public int PlanId { get; set; }
 
     public string? Title { get; set; }
 

@@ -136,11 +136,11 @@ export default function ChildTableNew() {
       <ChildInput type="text" placeholder="Адрес" 
       onChange={e => setAdress(e.target.value)}
       />
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-add" onClick={Add}>
+      <div className="btn-group" role="group" aria-label="Basic example">
+        <button type="button" className="btn btn-add" onClick={Add}>
           Создать
         </button>
-        <button type="button" class="btn btn-delete" onClick={() => setCreateModal(false)}>
+        <button type="button" className="btn btn-delete" onClick={() => setCreateModal(false)}>
           Закрыть
         </button>
       </div>
@@ -204,11 +204,11 @@ export default function ChildTableNew() {
         adress: e.target.value
       })}
       />
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-add" onClick={Update}>
+      <div className="btn-group" role="group" aria-label="Basic example">
+        <button type="button" className="btn btn-add" onClick={Update}>
           Сохранить
         </button>
-        <button type="button" class="btn btn-delete" onClick={() => setUpdateModal(false)}>
+        <button type="button" className="btn btn-delete" onClick={() => setUpdateModal(false)}>
           Закрыть
         </button>
       </div>
@@ -216,19 +216,19 @@ export default function ChildTableNew() {
   </ChildModal>
   </div>
 
-  <div class="btn-toolbar justify-content-between" aria-label="Toolbar with button groups">
-    <div class="btn-group" role="group" aria-label="First group">
-      <button type="button" class="btn btn-add" onClick={() => setCreateModal(true)}>
+  <div className="btn-toolbar justify-content-between" aria-label="Toolbar with button groups">
+    <div className="btn-group" role="group" aria-label="First group">
+      <button type="button" className="btn btn-add" onClick={() => setCreateModal(true)}>
         Добавить
       </button>
-      <button type="button" class="btn btn-update" onClick={() => {setChange(searchSelected()); setUpdateModal(true)}}>
+      <button type="button" className="btn btn-update" onClick={() => {setChange(searchSelected()); setUpdateModal(true)}}>
         Редактировать
       </button>
-      <button type="button" class="btn btn-delete" onClick={Delete}>
+      <button type="button" className="btn btn-delete" onClick={Delete}>
         Удалить 
       </button>
     </div>
-    <div class="input-group">
+    <div className="input-group">
       <ChildInput 
       value={search}
       onChange={e => setSearch(e.target.value)}
@@ -458,7 +458,7 @@ function Row(props) {
                     <TableCell align="justify">Льгота: <textarea value={row.benefits} /></TableCell>
                     <TableCell align="justify">Прочее: <textarea value={row.other} /></TableCell>
                     <TableCell align="justify">
-                      <button type="button"  class="btn btn-add" onClick={()=>console.log(row)}>
+                      <button type="button"  className="btn btn-add" onClick={()=>console.log(row)}>
                         Сохранить
                       </button>
                     </TableCell>
