@@ -40,86 +40,27 @@ namespace TestReact.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(child).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ChildExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return await _childrenRepository.PutChild(id, child);
         }
 
         // POST: api/Children
-        //To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Child>> PostChild(Child child)
         {
             //Console.WriteLine(child);
-            _context.Children.Add(child);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ChildExists(child.ChildId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetChild", new { id = child.ChildId }, child);
+           return await _childrenRepository.PostChild(child);
         }
 
         // DELETE: api/Children/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteChild(int id)
         {
-            var child = await _context.Children.FindAsync(id);
-            if (child == null)
-            {
-                return NotFound();
-            }
-
-            _context.Children.Remove(child);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return await _childrenRepository.DeleteChild(id);
         }
 
         private bool ChildExists(int id)
         {
             return _context.Children.Any(e => e.ChildId == id);
         }
-
-        #region MKB10
-        [HttpGet]
-        [Route("api/Children/mkb")]
-        public async Task<ActionResult<IEnumerable<Mkb10>>> GetMkb10s()
-        {
-            if (_context.Mkb10s == null)
-            {
-                return NotFound();
-            }
-            return await _context.Mkb10s.ToListAsync();
-        }
-
-        #endregion
     }
 }

@@ -24,7 +24,7 @@ export default function Planner() {
   const [selectedDate, setSelectedDate] = useState()
 
   const [newPlan, setNewPlan] = useState({
-    id: 0,
+    id: "",
     title: "",
     date: ""
   })
@@ -48,7 +48,7 @@ export default function Planner() {
 
   async function Add(){
     const data = {
-      planid: plans.length+1,
+      id: plans.length+1,
       title: newPlan.title,
       date: newPlan.date
     }
@@ -67,6 +67,7 @@ export default function Planner() {
         alert("error update")
       }
     });
+    setPlans(plans => [data,...plans])
     console.log(data)
     setAddModal(false)
   }
@@ -104,7 +105,20 @@ export default function Planner() {
       ...finished,
       arg.target.value
     ])
-
+    Delete(arg.target.value)
+    console.log(finished);
+  }
+  async function Delete(id){
+    const response = await fetch("api/Plans/"+id,{ 
+      method: 'Delete',
+    }).then((response)=>{
+      if(response.ok){
+      }
+      else{
+        alert("error delete")
+      }
+    });
+    
   }
 
   return (
@@ -156,11 +170,12 @@ export default function Planner() {
       </div>
       
   )
+  
 
   function renderEventContent(eventInfo) {
     return (
       <>
-        <input className="form-check-input" type="checkbox" value={eventInfo.event.id} style={{marginRight: "5px"}} onChange={handleCheckboxChange}></input>
+        <input className="form-check-input" checked={finished.includes(eventInfo.event.id) ? true : false} disabled={finished.includes(eventInfo.event.id) ? true : false} type="checkbox" value={eventInfo.event.id} style={{marginRight: "5px"}} onChange={handleCheckboxChange}></input>
         <strong style={{ textDecoration: finished.includes(eventInfo.event.id) ? "line-through" : "none" }}>{eventInfo.event.title}</strong>
       </>
     )

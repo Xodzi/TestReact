@@ -50,7 +50,6 @@ namespace TestReact.Controllers
         }
 
         // PUT: api/Mkb10/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMkb10(int id, Mkb10 mkb10)
         {
