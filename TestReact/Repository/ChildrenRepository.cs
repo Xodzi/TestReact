@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using TestReact.Models;
 using System.Web;
+using System.Linq;
 
 namespace TestReact.Repository
 {
@@ -32,6 +33,10 @@ namespace TestReact.Repository
         {
             return await _context.Children
                .ToListAsync();
+        }
+        public async Task<IEnumerable<Child>> GetById(int id)
+        {
+            return await _context.Children.Where(child=> child.ChildId == id).ToListAsync();
         }
 
         public async Task<ActionResult<Child>> PostChild(Child child)

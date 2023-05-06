@@ -9,5 +9,6 @@ namespace TestReact.Repository
         Task<IActionResult> PutChild(int id, Child child);
         Task<ActionResult<Child>> PostChild(Child child);
         Task<IActionResult> DeleteChild(int id);
+        Task<IEnumerable<Child>> GetById(int id);
     }
 }

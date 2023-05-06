@@ -22,6 +22,15 @@ namespace TestReact.Controllers
             _context = context;
             _childrenRepository = new ChildrenRepository(context);
         }
+        public ChildrenController(ClinicContext context, IChildrenRepository _rep)
+        {
+            _context = context;
+            _childrenRepository = _rep;
+        }
+        public ChildrenController(IChildrenRepository _rep)
+        {
+            _childrenRepository = _rep;
+        }
 
         // GET: api/Children
         [HttpGet]
@@ -35,7 +44,7 @@ namespace TestReact.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChild(int id, Child child)
         {
-            if (id != child.ChildId)
+            if (child == null || id != child.ChildId)
             {
                 return BadRequest();
             }
@@ -58,9 +67,13 @@ namespace TestReact.Controllers
             return await _childrenRepository.DeleteChild(id);
         }
 
-        private bool ChildExists(int id)
+        public bool ChildExists(int id)
         {
             return _context.Children.Any(e => e.ChildId == id);
+        }
+        public async Task<IEnumerable<Child>> GetById(int id)
+        {
+            return await _childrenRepository.GetById(id);
         }
     }
 }
