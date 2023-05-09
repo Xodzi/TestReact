@@ -58,7 +58,7 @@ export class NavMenu extends Component {
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/fetch-data">
-                  Загшулка
+                  Fetch data
                 </NavLink>
               </NavItem>
             </ul>
