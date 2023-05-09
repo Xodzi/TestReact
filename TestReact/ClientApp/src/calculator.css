@@ -180,22 +180,6 @@
 .div_space{
     box-sizing: content-box;
     block-size: 59.6875px;
-    border-block-end-color: rgb(0, 128, 192);
-    border-block-end-style: solid;
-    border-block-end-width: 2.4px;
-    border-block-start-color: rgb(0, 128, 192);
-    border-block-start-style: solid;
-    border-block-start-width: 2.4px;
-    border-end-end-radius: 10px;
-    border-end-start-radius: 10px;
-    border-inline-end-color: rgb(0, 128, 192);
-    border-inline-end-style: solid;
-    border-inline-end-width: 2.4px;
-    border-inline-start-color: rgb(0, 128, 192);
-    border-inline-start-style: solid;
-    border-inline-start-width: 2.4px;
-    border-start-end-radius: 10px;
-    border-start-start-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.125) 0px 0px 9px 0px inset;
     caret-color: rgb(34, 34, 34);
     color: rgb(34, 34, 34);
@@ -213,12 +197,16 @@
     text-size-adjust: 100%;
     width: 68.15px;
     background: rgb(241, 242, 242);
-    border: 2.4px solid rgb(0, 128, 192);
+    border: 2.4px solid rgb(34, 34, 34);
     border-radius: 10px;
     margin: 0px 0px 10px 8px;
     outline: rgb(34, 34, 34) none 0px;
     font: 700 16px / 19.696px Arial, Helvetica, sans-serif;
     padding: 8.29688px;
+}
+.results{
+    border: 2.4px solid rgb(34, 34, 34);
+    margin-top: 10px;
 }
 
 

@@ -125,6 +125,7 @@ export default function Calculator() {
             let min = parseFloat(arr[0].replace(',','.').replace(' ',''))
             let max = parseFloat(arr[1].replace(',','.').replace(' ',''))
              if (height >= min && height <= max) {
+               console.log('s')
                 setResH({
                    class: 'low',
                    status: "ниже нормы"
@@ -140,6 +141,7 @@ export default function Calculator() {
                 console.log(max)
                 console.log(height)
                 if (height >= min && height <= max) {
+                  console.log('3')
                    setResH({
                       class: 'medium',
                       status: "норма"
@@ -151,6 +153,7 @@ export default function Calculator() {
                   let min = parseFloat(arr[0].replace(',','.'))
                   let max = parseFloat(arr[1].replace(',','.'))
                    if (height >= min && height <= max) {
+                     console.log('4')
                       setResH({
                          class: 'higher',
                          status: "выше нормы"
@@ -158,6 +161,7 @@ export default function Calculator() {
                       setCurrentH(Height[i])
                       return
                    } else if (height >= Height[i].vetyhigher) { //vh
+                     console.log('5')
                       setResH({
                          class: 'veryh',
                          status: "сильно выше нормы"
@@ -256,7 +260,7 @@ function ComutWM() {
                  let min = parseFloat(arr[0].replace(',','.'))
                  let max = parseFloat(arr[1].replace(',','.'))
                   if (weight >= min && weight <= max) {
-                     setResH({
+                     setResW({
                         class: 'higher',
                         status: "выше нормы"
                      })
@@ -279,18 +283,18 @@ function ComutIMB(){
    }
    else{
       if(IMB < IMBJ.medium){
-         setIMBC('low')
+         setIMBC('medium')
       }
       else{
          if(IMB < IMBJ.higher){
-            setIMBC('medium')
+            setIMBC('higher')
          }
          else{
             if(IMB < IMBJ.vetyhigher){
-               setIMBC('higher')
+               setIMBC('vetyhigher')
             }
             else{
-               setIMBC('veryh')
+               setIMBC('low')
             }
          }
       }
