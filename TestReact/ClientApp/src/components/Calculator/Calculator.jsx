@@ -7,6 +7,7 @@ import '../../calculator.css';
 import Height from './heightM.json'
 import HeightF from './heightF.json'
 import Weight from './weight.json'
+import IMBJ from './IMB.json'
 
 export default function Calculator() {
 
@@ -19,6 +20,9 @@ export default function Calculator() {
   months: "",
   weeks: "",
  })
+
+ const [IMB, setIMB] = useState()
+ const [IMBclass, setIMBC] = useState()
 
  const [resH, setResH] = useState({
   class: "",
@@ -41,8 +45,11 @@ export default function Calculator() {
   if(gender==='boy'){
    ComutHM()
    ComutWM()
+   ComutIMB()
   }
   else ComutHF()
+  ComutWM()
+  ComutIMB()
  }
 
 
@@ -95,13 +102,13 @@ export default function Calculator() {
           <P className={resH.class}>
           Рост: {height} {resH.status} <br/>
           </P>
-          <P>
-          ИМТ: 
+          <P className={IMBclass}>
+          ИМТ: {IMB}
           </P>
           </div>
     </div>
   )
-
+          //#region  Hm
   function ComutHM() {
     for (let i = 0; i < Height.length; i++) {
        if (Height[i].year == age.years && Height[i].month == age.months) {
@@ -209,7 +216,8 @@ function ComutHF() {
                     setCurrentH(Height[i])
                  }}}}}}
 }
-
+  //#endregion Hm
+//#region CW
 function ComutWM() {
    for (let i = 0; i < Weight.length; i++) {
       if (Weight[i].year == age.years && Weight[i].month == age.months) {
@@ -262,6 +270,32 @@ function ComutWM() {
                      //setCurrentH(Height[i])
                      return
                    }}}}}}
+}
+function ComutIMB(){
+   let temp = (height/100) * (height/100)
+   setIMB(Math.floor(weight/temp))
+   if(IMB <= IMBJ.low){
+      setIMBC('verylow')
+   }
+   else{
+      if(IMB < IMBJ.medium){
+         setIMBC('low')
+      }
+      else{
+         if(IMB < IMBJ.higher){
+            setIMBC('medium')
+         }
+         else{
+            if(IMB < IMBJ.vetyhigher){
+               setIMBC('higher')
+            }
+            else{
+               setIMBC('veryh')
+            }
+         }
+      }
+   }
+   return
 }
 
 

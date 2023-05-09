@@ -57,6 +57,7 @@ namespace TestReact.Controllers
         public async Task<ActionResult<Child>> PostChild(Child child)
         {
             //Console.WriteLine(child);
+            if(child==null) return BadRequest();
            return await _childrenRepository.PostChild(child);
         }
 
