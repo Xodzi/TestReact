@@ -1,7 +1,10 @@
-.pagination{
-    width: 50px;
+.css-90oupa-MuiTableCell-root{
+    width: 10px;
 }
-.row{
-    width: 30px;
-    height: 10px;
+table, th, td {
+    width: auto;
+    color: red;
+}
+.row {
+    text-align: justify;
 }

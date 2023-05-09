@@ -1,8 +1,9 @@
 
-import FetchData from "./components/FetchData";
 import { Home } from "./components/Home";
 import ChildTableNew from "./components/ChildTable/ChildTableNew";
-import Calculator from "./components/Calculator";
+import Calculator from "./components/Calculator/Calculator";
+import Table from "./components/CollapsibleTable";
+import Planner from './components/Planner/Planner';
 
 const AppRoutes = [
   {
@@ -10,15 +11,19 @@ const AppRoutes = [
     element: <Home />,
   },
   {
-    path: "/fetch-data",
-    element: <FetchData />,
-  },
-  {
     path: "/children",
     element: <ChildTableNew />,
   },{
     path: "/calc",
     element: <Calculator />,
+  },
+  {
+    path: "/fetch-data",
+    element: <Table />,
+  },
+  {
+    path: "/planner",
+    element: <Planner />
   },
 
 ];

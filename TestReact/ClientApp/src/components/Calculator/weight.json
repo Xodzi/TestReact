@@ -1,0 +1,1091 @@
+[
+ {
+  "year": 0,
+  "month": 0,
+  "verylow": 2.5,
+  "low": "2,5–2,8",
+  "medium": "2,9–3,9",
+  "higher": "4,0–4,4",
+  "vetyhigher": 4.4
+ },
+ {
+  "year": 0,
+  "month": 1,
+  "verylow": 3.4,
+  "low": "3,4–3,8",
+  "medium": "3,9–5,1",
+  "higher": "5,2–5,8",
+  "vetyhigher": 5.8
+ },
+ {
+  "year": 0,
+  "month": 2,
+  "verylow": 4.3,
+  "low": "4,3–4,8",
+  "medium": "4,9–6,3",
+  "higher": "6,4–7,1",
+  "vetyhigher": 7.1
+ },
+ {
+  "year": 0,
+  "month": 3,
+  "verylow": 5,
+  "low": "5,0–5,6",
+  "medium": "5,7–7,2",
+  "higher": "7,3–8,0",
+  "vetyhigher": 8
+ },
+ {
+  "year": 0,
+  "month": 4,
+  "verylow": 5.6,
+  "low": "5,6–6,1",
+  "medium": "6,2–7,8",
+  "higher": "7,9–8,7",
+  "vetyhigher": 8.7
+ },
+ {
+  "year": 0,
+  "month": 5,
+  "verylow": 6,
+  "low": "6,0–6,6",
+  "medium": "6,7–8,4",
+  "higher": "8,5–9,3",
+  "vetyhigher": 9.3
+ },
+ {
+  "year": 0,
+  "month": 6,
+  "verylow": 6.4,
+  "low": "6,4–7,0",
+  "medium": "7,1–8,8",
+  "higher": "8,9–9,8",
+  "vetyhigher": 9.8
+ },
+ {
+  "year": 0,
+  "month": 7,
+  "verylow": 6.7,
+  "low": "6,7–7,3",
+  "medium": "7,4–9,2",
+  "higher": "9,3–10,3",
+  "vetyhigher": 10.3
+ },
+ {
+  "year": 0,
+  "month": 8,
+  "verylow": 6.9,
+  "low": "6,9–7,6",
+  "medium": "7,7–9,6",
+  "higher": "9,7–10,7",
+  "vetyhigher": 10.7
+ },
+ {
+  "year": 0,
+  "month": 9,
+  "verylow": 7.1,
+  "low": "7,1–7,9",
+  "medium": "8,0–9,9",
+  "higher": "10,0–11,0",
+  "vetyhigher": 11
+ },
+ {
+  "year": 0,
+  "month": 10,
+  "verylow": 7.4,
+  "low": "7,4–8,1",
+  "medium": "8,2–10,2",
+  "higher": "10,3–11,4",
+  "vetyhigher": 11.4
+ },
+ {
+  "year": 0,
+  "month": 11,
+  "verylow": 7.6,
+  "low": "7,6–8,3",
+  "medium": "8,4–10,5",
+  "higher": "10,6–11,7",
+  "vetyhigher": 11.7
+ },
+ {
+  "year": 1,
+  "month": 0,
+  "verylow": 7.7,
+  "low": "7,7–8,5",
+  "medium": "8,6–10,8",
+  "higher": "10,9–12,0",
+  "vetyhigher": 12
+ },
+ {
+  "year": 1,
+  "month": 1,
+  "verylow": 7.9,
+  "low": "7,9–8,7",
+  "medium": "8,8–11,0",
+  "higher": "11,1–12,3",
+  "vetyhigher": 12.3
+ },
+ {
+  "year": 1,
+  "month": 2,
+  "verylow": 8.1,
+  "low": "8,1–8,9",
+  "medium": "9,0–11,3",
+  "higher": "11,4–12,6",
+  "vetyhigher": 12.6
+ },
+ {
+  "year": 1,
+  "month": 3,
+  "verylow": 8.3,
+  "low": "8,3–9,1",
+  "medium": "9,2–11,5",
+  "higher": "11,6–12,8",
+  "vetyhigher": 12.8
+ },
+ {
+  "year": 1,
+  "month": 4,
+  "verylow": 8.4,
+  "low": "8,4–9,3",
+  "medium": "9,4–11,7",
+  "higher": "11,8–13,1",
+  "vetyhigher": 13.1
+ },
+ {
+  "year": 1,
+  "month": 5,
+  "verylow": 8.6,
+  "low": "8,6–9,5",
+  "medium": "9,6–12,0",
+  "higher": "12,1–13,4",
+  "vetyhigher": 13.4
+ },
+ {
+  "year": 1,
+  "month": 6,
+  "verylow": 8.8,
+  "low": "8,8–9,7",
+  "medium": "9,8–12,2",
+  "higher": "12,3–13,7",
+  "vetyhigher": 13.7
+ },
+ {
+  "year": 1,
+  "month": 7,
+  "verylow": 8.9,
+  "low": "8,9–9,9",
+  "medium": "10,0–12,5",
+  "higher": "12,6–13,9",
+  "vetyhigher": 13.9
+ },
+ {
+  "year": 1,
+  "month": 8,
+  "verylow": 9.1,
+  "low": "9,1–10,0",
+  "medium": "10,1–12,7",
+  "higher": "12,8–14,2",
+  "vetyhigher": 14.2
+ },
+ {
+  "year": 1,
+  "month": 9,
+  "verylow": 9.2,
+  "low": "9,2–10,2",
+  "medium": "10,3–12,9",
+  "higher": "13,0–14,5",
+  "vetyhigher": 14.5
+ },
+ {
+  "year": 1,
+  "month": 10,
+  "verylow": 9.4,
+  "low": "9,4–10,4",
+  "medium": "10,5–13,2",
+  "higher": "13,3–14,7",
+  "vetyhigher": 14.7
+ },
+ {
+  "year": 1,
+  "month": 11,
+  "verylow": 9.5,
+  "low": "9,5–10,6",
+  "medium": "10,7–13,4",
+  "higher": "13,5–15,0",
+  "vetyhigher": 15
+ },
+ {
+  "year": 2,
+  "month": 0,
+  "verylow": 9.7,
+  "low": "9,7–10,7",
+  "medium": "10,8–13,6",
+  "higher": "13,7–15,3",
+  "vetyhigher": 15.3
+ },
+ {
+  "year": 2,
+  "month": 1,
+  "verylow": 9.8,
+  "low": "9,8–10,9",
+  "medium": "11,0–13,9",
+  "higher": "14,0–15,5",
+  "vetyhigher": 15.5
+ },
+ {
+  "year": 2,
+  "month": 2,
+  "verylow": 10,
+  "low": "10,0–11,1",
+  "medium": "11,2–14,1",
+  "higher": "14,2–15,8",
+  "vetyhigher": 15.8
+ },
+ {
+  "year": 2,
+  "month": 3,
+  "verylow": 10.1,
+  "low": "10,1–11,2",
+  "medium": "11,3–14,3",
+  "higher": "14,4–16,1",
+  "vetyhigher": 16.1
+ },
+ {
+  "year": 2,
+  "month": 4,
+  "verylow": 10.2,
+  "low": "10,2–11,4",
+  "medium": "11,5–14,5",
+  "higher": "14,6–16,3",
+  "vetyhigher": 16.3
+ },
+ {
+  "year": 2,
+  "month": 5,
+  "verylow": 10.4,
+  "low": "10,4–11,6",
+  "medium": "11,7–14,8",
+  "higher": "14,9 –16,6",
+  "vetyhigher": 16.6
+ },
+ {
+  "year": 2,
+  "month": 6,
+  "verylow": 10.5,
+  "low": "10,5–11,7",
+  "medium": "11,8–15,0",
+  "higher": "15,1–16,9",
+  "vetyhigher": 16.9
+ },
+ {
+  "year": 2,
+  "month": 7,
+  "verylow": 10.7,
+  "low": "10,7–11,9",
+  "medium": "12,0–15,2",
+  "higher": "15,3–17,1",
+  "vetyhigher": 17.1
+ },
+ {
+  "year": 2,
+  "month": 8,
+  "verylow": 10.8,
+  "low": "10,8–12,0",
+  "medium": "12,1–15,4",
+  "higher": "15,5–17,4",
+  "vetyhigher": 17.4
+ },
+ {
+  "year": 2,
+  "month": 9,
+  "verylow": 10.9,
+  "low": "10,9–12,2",
+  "medium": "12,3–15,6",
+  "higher": "15,7–17,6",
+  "vetyhigher": 17.6
+ },
+ {
+  "year": 2,
+  "month": 10,
+  "verylow": 11,
+  "low": "11,0–12,3",
+  "medium": "12,4–15,8",
+  "higher": "15,9–17,8",
+  "vetyhigher": 17.8
+ },
+ {
+  "year": 2,
+  "month": 11,
+  "verylow": 11.2,
+  "low": "11,2–12,5",
+  "medium": "12,6–16,0",
+  "higher": "16,1–18,1",
+  "vetyhigher": 18.1
+ },
+ {
+  "year": 3,
+  "month": 0,
+  "verylow": 11.3,
+  "low": "11,3–12,6",
+  "medium": "12,7–16,2",
+  "higher": "16,3–18,3",
+  "vetyhigher": 18.3
+ },
+ {
+  "year": 3,
+  "month": 1,
+  "verylow": 11.4,
+  "low": "11,4–12,8",
+  "medium": "12,9–16,4",
+  "higher": "16,5–18,6",
+  "vetyhigher": 18.6
+ },
+ {
+  "year": 3,
+  "month": 2,
+  "verylow": 11.5,
+  "low": "11,5–12,9",
+  "medium": "13,0–16,6",
+  "higher": "16,7–18,8",
+  "vetyhigher": 18.8
+ },
+ {
+  "year": 3,
+  "month": 3,
+  "verylow": 11.6,
+  "low": "11,6–13,0",
+  "medium": "13,1–16,8",
+  "higher": "16,9–19,0",
+  "vetyhigher": 19
+ },
+ {
+  "year": 3,
+  "month": 4,
+  "verylow": 11.8,
+  "low": "11,8–13,2",
+  "medium": "13,3–17,0",
+  "higher": "17,1–19,3",
+  "vetyhigher": 19.3
+ },
+ {
+  "year": 3,
+  "month": 5,
+  "verylow": 11.9,
+  "low": "11,9–13,3",
+  "medium": "13,4–17,2",
+  "higher": "17,3–19,5",
+  "vetyhigher": 19.5
+ },
+ {
+  "year": 3,
+  "month": 6,
+  "verylow": 12,
+  "low": "12,0–13,5",
+  "medium": "13,6–17,4",
+  "higher": "17,5–19,7",
+  "vetyhigher": 19.7
+ },
+ {
+  "year": 3,
+  "month": 7,
+  "verylow": 12.1,
+  "low": "12,1–13,6",
+  "medium": "13,7–17,6",
+  "higher": "17,7–20,0",
+  "vetyhigher": 20
+ },
+ {
+  "year": 3,
+  "month": 8,
+  "verylow": 12.2,
+  "low": "12,2–13,7",
+  "medium": "13,8–17,8",
+  "higher": "17,9–20,2",
+  "vetyhigher": 20.2
+ },
+ {
+  "year": 3,
+  "month": 9,
+  "verylow": 12.4,
+  "low": "12,4–13,9",
+  "medium": "14,0–18,0",
+  "higher": "18,1–20,5",
+  "vetyhigher": 20.5
+ },
+ {
+  "year": 3,
+  "month": 10,
+  "verylow": 12.5,
+  "low": "12,5–14,0",
+  "medium": "14,1–18,2",
+  "higher": "18,3–20,7",
+  "vetyhigher": 20.7
+ },
+ {
+  "year": 3,
+  "month": 11,
+  "verylow": 12.6,
+  "low": "12,6–14,2",
+  "medium": "14,3–18,4",
+  "higher": "18,5–20,9",
+  "vetyhigher": 20.9
+ },
+ {
+  "year": 4,
+  "month": 0,
+  "verylow": 12.7,
+  "low": "12,7–14,3",
+  "medium": "14,4–18,6",
+  "higher": "18,7–21,2",
+  "vetyhigher": 21.2
+ },
+ {
+  "year": 4,
+  "month": 1,
+  "verylow": 12.8,
+  "low": "12,8–14,4",
+  "medium": "14,5–18,8",
+  "higher": "18,9–21,4",
+  "vetyhigher": 21.4
+ },
+ {
+  "year": 4,
+  "month": 2,
+  "verylow": 12.9,
+  "low": "12,9–14,6",
+  "medium": "14,7–19,0",
+  "higher": "19,1–21,7",
+  "vetyhigher": 21.7
+ },
+ {
+  "year": 4,
+  "month": 3,
+  "verylow": 13.1,
+  "low": "13,1–14,7",
+  "medium": "14,8–19,2",
+  "higher": "19,3–21,9",
+  "vetyhigher": 21.9
+ },
+ {
+  "year": 4,
+  "month": 4,
+  "verylow": 13.2,
+  "low": "13,2–14,9",
+  "medium": "15,0–19,4",
+  "higher": "19,5–22,2",
+  "vetyhigher": 22.2
+ },
+ {
+  "year": 4,
+  "month": 5,
+  "verylow": 13.3,
+  "low": "13,3–15,0",
+  "medium": "15,1–19,6",
+  "higher": "19,7–22,4",
+  "vetyhigher": 22.4
+ },
+ {
+  "year": 4,
+  "month": 6,
+  "verylow": 13.4,
+  "low": "13,4–15,1",
+  "medium": "15,2–19,8",
+  "higher": "19,9–22,7",
+  "vetyhigher": 22.7
+ },
+ {
+  "year": 4,
+  "month": 7,
+  "verylow": 13.5,
+  "low": "13,5–15,3",
+  "medium": "15,4–20,0",
+  "higher": "20,1–22,9",
+  "vetyhigher": 22.9
+ },
+ {
+  "year": 4,
+  "month": 8,
+  "verylow": 13.6,
+  "low": "13,6–15,4",
+  "medium": "15,5–20,2",
+  "higher": "20,3–23,2",
+  "vetyhigher": 23.2
+ },
+ {
+  "year": 4,
+  "month": 9,
+  "verylow": 13.7,
+  "low": "13,7–15,5",
+  "medium": "15,6–20,4",
+  "higher": "20,5–23,4",
+  "vetyhigher": 23.4
+ },
+ {
+  "year": 4,
+  "month": 10,
+  "verylow": 13.8,
+  "low": "13,8–15,7",
+  "medium": "15,8–20,6",
+  "higher": "20,7–23,7",
+  "vetyhigher": 23.7
+ },
+ {
+  "year": 4,
+  "month": 11,
+  "verylow": 14,
+  "low": "14,0–15,8",
+  "medium": "15,9–20,8",
+  "higher": "20,9–23,9",
+  "vetyhigher": 23.9
+ },
+ {
+  "year": 5,
+  "month": 0,
+  "verylow": 14.1,
+  "low": "14,1–15,9",
+  "medium": "16,0–21,0",
+  "higher": "21,1–24,2",
+  "vetyhigher": 24.2
+ },
+ {
+  "year": 5,
+  "month": 1,
+  "verylow": 14.4,
+  "low": "14,4–16,2",
+  "medium": "16,3–21,1",
+  "higher": "21,2–24,2",
+  "vetyhigher": 24.2
+ },
+ {
+  "year": 5,
+  "month": 2,
+  "verylow": 14.5,
+  "low": "14,5–16,3",
+  "medium": "16,4–21,3",
+  "higher": "21,4–23,4",
+  "vetyhigher": 24.4
+ },
+ {
+  "year": 5,
+  "month": 3,
+  "verylow": 14.6,
+  "low": "14,6–16,5",
+  "medium": "16,6–21,5",
+  "higher": "21,6–24,7",
+  "vetyhigher": 24.7
+ },
+ {
+  "year": 5,
+  "month": 4,
+  "verylow": 14.8,
+  "low": "14,8–16,6",
+  "medium": "16,7–21,7",
+  "higher": "21,8–24,9",
+  "vetyhigher": 24.9
+ },
+ {
+  "year": 5,
+  "month": 5,
+  "verylow": 14.9,
+  "low": "14,9–16,8",
+  "medium": "16,9–22,0",
+  "higher": "22,1–25,2",
+  "vetyhigher": 25.2
+ },
+ {
+  "year": 5,
+  "month": 6,
+  "verylow": 15,
+  "low": "15,0–16,9",
+  "medium": "17,0–22,2",
+  "higher": "22,3–25,5",
+  "vetyhigher": 25.5
+ },
+ {
+  "year": 5,
+  "month": 7,
+  "verylow": 15.2,
+  "low": "15,2–17,1",
+  "medium": "17,2–22,4",
+  "higher": "22,5–25,7",
+  "vetyhigher": 25.7
+ },
+ {
+  "year": 5,
+  "month": 8,
+  "verylow": 15.3,
+  "low": "15,3–17,3",
+  "medium": "17,4–22,6",
+  "higher": "22,7–26,0",
+  "vetyhigher": 26
+ },
+ {
+  "year": 5,
+  "month": 9,
+  "verylow": 15.4,
+  "low": "15,4–17,4",
+  "medium": "17,5–22,8",
+  "higher": "22,9 –26,3",
+  "vetyhigher": 23.3
+ },
+ {
+  "year": 5,
+  "month": 10,
+  "verylow": 15.6,
+  "low": "15,6–17,6",
+  "medium": "17,7–23,1",
+  "higher": "23,2–26,6",
+  "vetyhigher": 26.6
+ },
+ {
+  "year": 5,
+  "month": 11,
+  "verylow": 15.7,
+  "low": "15,7–17,7",
+  "medium": "17,8–23,3",
+  "higher": "23,4–26,8",
+  "vetyhigher": 26.8
+ },
+ {
+  "year": 6,
+  "month": 0,
+  "verylow": 15.9,
+  "low": "15,9–17,9",
+  "medium": "18,0–23,5",
+  "higher": "23,6–27,1",
+  "vetyhigher": 27.1
+ },
+ {
+  "year": 6,
+  "month": 1,
+  "verylow": 16,
+  "low": "16,0–18,1",
+  "medium": "18,2–23,7",
+  "higher": "23,8–27,4",
+  "vetyhigher": 27.4
+ },
+ {
+  "year": 6,
+  "month": 2,
+  "verylow": 16.2,
+  "low": "16,2–18,2",
+  "medium": "18,3–24,0",
+  "higher": "24,1–27,7",
+  "vetyhigher": 27.7
+ },
+ {
+  "year": 6,
+  "month": 3,
+  "verylow": 16.3,
+  "low": "16,3–18,4",
+  "medium": "18,5–24,2",
+  "higher": "24,3–28,0",
+  "vetyhigher": 28
+ },
+ {
+  "year": 6,
+  "month": 4,
+  "verylow": 16.5,
+  "low": "16,5–18,6",
+  "medium": "18,7–24,4",
+  "higher": "24,5–28,3",
+  "vetyhigher": 28.3
+ },
+ {
+  "year": 6,
+  "month": 5,
+  "verylow": 16.6,
+  "low": "16,6–18,7",
+  "medium": "18,8–24,7",
+  "higher": "24,8–28,6",
+  "vetyhigher": 28.6
+ },
+ {
+  "year": 6,
+  "month": 6,
+  "verylow": 16.8,
+  "low": "16,8–18,9",
+  "medium": "19,0–24,9",
+  "higher": "25,0–28,9",
+  "vetyhigher": 28.9
+ },
+ {
+  "year": 6,
+  "month": 7,
+  "verylow": 16.9,
+  "low": "16,9–19,1",
+  "medium": "19,2–25,2",
+  "higher": "25,3–29,2",
+  "vetyhigher": 29.2
+ },
+ {
+  "year": 6,
+  "month": 8,
+  "verylow": 17.1,
+  "low": "17,1–19,2",
+  "medium": "19,3–25,4",
+  "higher": "25,5–29,5",
+  "vetyhigher": 29.5
+ },
+ {
+  "year": 6,
+  "month": 9,
+  "verylow": 17.2,
+  "low": "17,2–19,4",
+  "medium": "19,5–25,6",
+  "higher": "25,7–29,8",
+  "vetyhigher": 29.8
+ },
+ {
+  "year": 6,
+  "month": 10,
+  "verylow": 17.4,
+  "low": "17,4–19,6",
+  "medium": "19,7–25,9",
+  "higher": "26,0–30,1",
+  "vetyhigher": 30.1
+ },
+ {
+  "year": 6,
+  "month": 11,
+  "verylow": 17.5,
+  "low": "17,5–19,8",
+  "medium": "19,9–26,1",
+  "higher": "26,2–30,4",
+  "vetyhigher": 30.4
+ },
+ {
+  "year": 7,
+  "month": 0,
+  "verylow": 17.7,
+  "low": "17,7–19,9",
+  "medium": "20,0–26,4",
+  "higher": "26,5–30,7",
+  "vetyhigher": 30.7
+ },
+ {
+  "year": 7,
+  "month": 1,
+  "verylow": 17.8,
+  "low": "17,8–20,1",
+  "medium": "20,2–26,6",
+  "higher": "26,7–31,0",
+  "vetyhigher": 31
+ },
+ {
+  "year": 7,
+  "month": 2,
+  "verylow": 18,
+  "low": "18,0–20,3",
+  "medium": "20,4–26,9",
+  "higher": "27,0–31,3",
+  "vetyhigher": 31.3
+ },
+ {
+  "year": 7,
+  "month": 3,
+  "verylow": 18.1,
+  "low": "18,1–20,5",
+  "medium": "20,6–27,1",
+  "higher": "27,2–31,7",
+  "vetyhigher": 31.7
+ },
+ {
+  "year": 7,
+  "month": 4,
+  "verylow": 18.3,
+  "low": "18,3–20,6",
+  "medium": "20,7–27,4",
+  "higher": "27,5–32,0",
+  "vetyhigher": 32
+ },
+ {
+  "year": 7,
+  "month": 5,
+  "verylow": 18.4,
+  "low": "18,4–20,8",
+  "medium": "20,9–27,7",
+  "higher": "27,8–32,3",
+  "vetyhigher": 32.3
+ },
+ {
+  "year": 7,
+  "month": 6,
+  "verylow": 18.6,
+  "low": "18,6–21,0",
+  "medium": "21,1–27,9",
+  "higher": "28,0–32,6",
+  "vetyhigher": 32.6
+ },
+ {
+  "year": 7,
+  "month": 7,
+  "verylow": 18.7,
+  "low": "18,7–21,2",
+  "medium": "21,3–28,2",
+  "higher": "28,3–33,0",
+  "vetyhigher": 33
+ },
+ {
+  "year": 7,
+  "month": 8,
+  "verylow": 18.9,
+  "low": "18,9–21,3",
+  "medium": "21,4–28,4",
+  "higher": "28,5–33,3",
+  "vetyhigher": 33.3
+ },
+ {
+  "year": 7,
+  "month": 9,
+  "verylow": 19,
+  "low": "19,0–21,5",
+  "medium": "21,6–28,7",
+  "higher": "28,8–33,7",
+  "vetyhigher": 33.7
+ },
+ {
+  "year": 7,
+  "month": 10,
+  "verylow": 19.2,
+  "low": "19,2–21,7",
+  "medium": "21,8–29,0",
+  "higher": "29,1–34,0",
+  "vetyhigher": 34
+ },
+ {
+  "year": 7,
+  "month": 11,
+  "verylow": 19.3,
+  "low": "19,3–21,9",
+  "medium": "22,0–29,2",
+  "higher": "29,3–34,4",
+  "vetyhigher": 34.4
+ },
+ {
+  "year": 8,
+  "month": 0,
+  "verylow": 19.5,
+  "low": "19,5–22,0",
+  "medium": "22,1–29,5",
+  "higher": "29,6–34,7",
+  "vetyhigher": 34.7
+ },
+ {
+  "year": 8,
+  "month": 1,
+  "verylow": 19.6,
+  "low": "19,6–22,2",
+  "medium": "22,3–29,8",
+  "higher": "29,9–35,1",
+  "vetyhigher": 35.1
+ },
+ {
+  "year": 8,
+  "month": 2,
+  "verylow": 19.8,
+  "low": "19,8–22,4",
+  "medium": "22,5–30,1",
+  "higher": "30,2–35,5",
+  "vetyhigher": 35.5
+ },
+ {
+  "year": 8,
+  "month": 3,
+  "verylow": 19.9,
+  "low": "19,9–22,6",
+  "medium": "22,7–30,3",
+  "higher": "30,4–35,8",
+  "vetyhigher": 35.8
+ },
+ {
+  "year": 8,
+  "month": 4,
+  "verylow": 20.1,
+  "low": "20,1–22,8",
+  "medium": "22,9–30,6",
+  "higher": "30,7–36,2",
+  "vetyhigher": 36.2
+ },
+ {
+  "year": 8,
+  "month": 5,
+  "verylow": 20.2,
+  "low": "20,2–22,9",
+  "medium": "23,0–30,9",
+  "higher": "31,0–36,6",
+  "vetyhigher": 36.6
+ },
+ {
+  "year": 8,
+  "month": 6,
+  "verylow": 20.4,
+  "low": "20,4–23,1",
+  "medium": "23,2–31,2",
+  "higher": "31,3–37,0",
+  "vetyhigher": 37
+ },
+ {
+  "year": 8,
+  "month": 7,
+  "verylow": 20.5,
+  "low": "20,5–23,3",
+  "medium": "23,4–31,5",
+  "higher": "31,6–37,4",
+  "vetyhigher": 37.4
+ },
+ {
+  "year": 8,
+  "month": 8,
+  "verylow": 20.7,
+  "low": "20,7–23,5",
+  "medium": "23,6–31,8",
+  "higher": "31,9–37,8",
+  "vetyhigher": 37.8
+ },
+ {
+  "year": 8,
+  "month": 9,
+  "verylow": 20.8,
+  "low": "20,8–23,7",
+  "medium": "23,8–32,1",
+  "higher": "32,2–38,2",
+  "vetyhigher": 38.2
+ },
+ {
+  "year": 8,
+  "month": 10,
+  "verylow": 21,
+  "low": "21,0–23,8",
+  "medium": "23,9–32,4",
+  "higher": "32,5—38,6",
+  "vetyhigher": 38.6
+ },
+ {
+  "year": 8,
+  "month": 11,
+  "verylow": 21.1,
+  "low": "21,1–24,0",
+  "medium": "24,1–32,7",
+  "higher": "32,8–39,0",
+  "vetyhigher": 39
+ },
+ {
+  "year": 9,
+  "month": 0,
+  "verylow": 21.3,
+  "low": "21,3–24,2",
+  "medium": "24,3–33,0",
+  "higher": "33,1 –39,4",
+  "vetyhigher": 39.4
+ },
+ {
+  "year": 9,
+  "month": 1,
+  "verylow": 21.4,
+  "low": "21,4–24,4",
+  "medium": "24,5–33,3",
+  "higher": "33,4–39,9",
+  "vetyhigher": 39.9
+ },
+ {
+  "year": 9,
+  "month": 2,
+  "verylow": 21.6,
+  "low": "21,6–24,6",
+  "medium": "24,7–33,6",
+  "higher": "33,7–40,3",
+  "vetyhigher": 40.3
+ },
+ {
+  "year": 9,
+  "month": 3,
+  "verylow": 21.7,
+  "low": "21,7–24,8",
+  "medium": "24,9–33,9",
+  "higher": "34,0–40,7",
+  "vetyhigher": 40.7
+ },
+ {
+  "year": 9,
+  "month": 4,
+  "verylow": 21.9,
+  "low": "21,9–25,0",
+  "medium": "25,1–34,3",
+  "higher": "34,4–41,2",
+  "vetyhigher": 41.2
+ },
+ {
+  "year": 9,
+  "month": 5,
+  "verylow": 22.1,
+  "low": "22,1–25,2",
+  "medium": "25,3–34,6",
+  "higher": "34,7–41,7",
+  "vetyhigher": 41.7
+ },
+ {
+  "year": 9,
+  "month": 6,
+  "verylow": 22.2,
+  "low": "22,2–25,4",
+  "medium": "25,5–34,9",
+  "higher": "35,0–42,1",
+  "vetyhigher": 42.1
+ },
+ {
+  "year": 9,
+  "month": 7,
+  "verylow": 22.4,
+  "low": "22,4–25,6",
+  "medium": "25,7–35,3",
+  "higher": "35,4–42,6",
+  "vetyhigher": 42.6
+ },
+ {
+  "year": 9,
+  "month": 8,
+  "verylow": 22.5,
+  "low": "22,5–25,8",
+  "medium": "25,9–35,6",
+  "higher": "35,7–43,1",
+  "vetyhigher": 43.1
+ },
+ {
+  "year": 9,
+  "month": 9,
+  "verylow": 22.7,
+  "low": "22,7–26,0",
+  "medium": "26,1–36,0",
+  "higher": "36,1–43,5",
+  "vetyhigher": 43.5
+ },
+ {
+  "year": 9,
+  "month": 10,
+  "verylow": 22.9,
+  "low": "22,9–26,2",
+  "medium": "26,3–36,3",
+  "higher": "36,4–44,0",
+  "vetyhigher": 44
+ },
+ {
+  "year": 9,
+  "month": 11,
+  "verylow": 23,
+  "low": "23,0–26,4",
+  "medium": "26,5–36,7",
+  "higher": "36,8–44,5",
+  "vetyhigher": 44.5
+ },
+ {
+  "year": 10,
+  "month": 0,
+  "verylow": 23.2,
+  "low": "23,2–26,6",
+  "medium": "26,7–37,0",
+  "higher": "37,1–45,0",
+  "vetyhigher": 45
+ }
+]

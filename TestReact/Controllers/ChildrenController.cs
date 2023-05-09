@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TestReact.Models;
+using TestReact.Repository;
 
 namespace TestReact.Controllers
 {
@@ -14,120 +15,66 @@ namespace TestReact.Controllers
     public class ChildrenController : ControllerBase
     {
         private readonly ClinicContext _context;
-
-        private int _totalCount;
-        private int? _currentPage;
-        private int? _pageSize;
-        private int? _totalPages;
+        private IChildrenRepository _childrenRepository;
 
         public ChildrenController(ClinicContext context)
         {
             _context = context;
+            _childrenRepository = new ChildrenRepository(context);
+        }
+        public ChildrenController(ClinicContext context, IChildrenRepository _rep)
+        {
+            _context = context;
+            _childrenRepository = _rep;
+        }
+        public ChildrenController(IChildrenRepository _rep)
+        {
+            _childrenRepository = _rep;
         }
 
         // GET: api/Children
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Child>>> GetChildren()
+        public async Task<IEnumerable<Child>> GetChildren()
         {
-            var pageResults = 10f;
-            var pageCount = Math.Ceiling(_context.Children.Count()/pageResults);
-
-
-            
-            return await _context.Children
-                .ToListAsync();
+            return await _childrenRepository.GetChildren();
+            //return await _context.Children
+            //    .ToListAsync();
         }
 
-        // GET: api/Children/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Child>> GetChild(int id)
-        //{
-        //    var child = await _context.Children.FindAsync(id);
-
-        //    if (child == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return child;
-        //}
-
-        // PUT: api/Children/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChild(int id, Child child)
         {
-            if (id != child.ChildId)
+            if (child == null || id != child.ChildId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(child).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ChildExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return await _childrenRepository.PutChild(id, child);
         }
 
         // POST: api/Children
-        //To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Child>> PostChild(Child child)
         {
             //Console.WriteLine(child);
-            _context.Children.Add(child);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ChildExists(child.ChildId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetChild", new { id = child.ChildId }, child);
+            if(child==null) return BadRequest();
+           return await _childrenRepository.PostChild(child);
         }
 
         // DELETE: api/Children/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteChild(int id)
         {
-            var child = await _context.Children.FindAsync(id);
-            if (child == null)
-            {
-                return NotFound();
-            }
-
-            _context.Children.Remove(child);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return await _childrenRepository.DeleteChild(id);
         }
 
-        private bool ChildExists(int id)
+        public bool ChildExists(int id)
         {
             return _context.Children.Any(e => e.ChildId == id);
+        }
+        public async Task<IEnumerable<Child>> GetById(int id)
+        {
+            return await _childrenRepository.GetById(id);
         }
     }
 }
